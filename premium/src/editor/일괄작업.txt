@@ -1,0 +1,228 @@
+INSERT INTO ST_TC_USER
+(USER_NO, USER_ID, USER_PWD, USER_TYPE, USER_NM, USER_COUNTRY, USER_STATE, USER_ADDRESS, USER_TEL_NO, USER_BIRTHDAY, USER_SEX, USER_RGST_DT, PUSH_TOKEN, LOGIN_DT, USER_DELETE_YN, USER_DELETE_DT, LOGIN_CK, SCHOOL_CODE, CLASS_DEPTH)
+
+VALUES
+
+
+(NULL, 'tc01@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'TC', '김선생', 'KR', NULL, '서울시', '010-0000-0000', '1980-01-01', 'F', sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'KG0001', NULL),
+(NULL, 'tc02@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'TC', '이선생', 'KR', NULL, '서울시', '010-0000-0000', '1980-01-01', 'F', sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'KG0001', NULL),
+(NULL, 'tc03@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'TC', '박선생', 'KR', NULL, '서울시', '010-0000-0000', '1980-01-01', 'F', sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'KG0001', NULL),
+(NULL, 'tc04@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'TC', '정선생', 'KR', NULL, '서울시', '010-0000-0000', '1980-01-01', 'F', sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'KG0001', NULL),
+(NULL, 'tc05@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'TC', '윤선생', 'KR', NULL, '서울시', '010-0000-0000', '1980-01-01', 'F', sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'KG0001', NULL),
+(NULL, 'tc06@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'TC', '류선생', 'KR', NULL, '서울시', '010-0000-0000', '1980-01-01', 'F', sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'KG0001', NULL),
+
+
+
+
+
+
+
+INSERT INTO ST_ST_USER
+(USER_NO, USER_ID, USER_PWD, USER_TYPE, USER_NM, USER_BIRTHDAY, USER_COUNTRY, USER_STATE, USER_ADDRESS, USER_TEL_NO, USER_SEX, USER_RGST_DT, PUSH_TOKEN, LOGIN_DT, USER_DELETE_YN, USER_DELETE_DT, LOGIN_CK, IS_MEASURING, TEACHER_ID, CAVITY_CNT)
+VALUES(NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, sysdate(), NULL, NULL, 'N', NULL, 0, 'N', NULL);
+
+(NULL, 'st01@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '남궁O', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc01@gmail.com', 0),
+(NULL, 'st02@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '김OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N', 'tc01@gmail.com', 0),
+(NULL, 'st03@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '이OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N', 'tc01@gmail.com', 0),
+(NULL, 'st04@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '박OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N', 'tc01@gmail.com', 0),
+(NULL, 'st05@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '최OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N', 'tc01@gmail.com', 0),
+(NULL, 'st06@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '김OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N', 'tc01@gmail.com', 0),
+(NULL, 'st07@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '강OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N', 'tc01@gmail.com', 0),
+(NULL, 'st08@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '조OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N', 'tc01@gmail.com', 0),
+(NULL, 'st09@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '윤OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N', 'tc01@gmail.com', 0),
+(NULL, 'st10@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '장OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N', 'tc01@gmail.com', 0),
+(NULL, 'st11@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '임OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N', 'tc01@gmail.com', 0),
+(NULL, 'st12@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '한OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N', 'tc01@gmail.com', 0),
+(NULL, 'st13@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '오OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N', 'tc01@gmail.com', 0),
+(NULL, 'st14@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '신OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N', 'tc01@gmail.com', 0),
+(NULL, 'st15@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '권OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N', 'tc01@gmail.com', 0),
+(NULL, 'st16@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '황OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N', 'tc01@gmail.com', 0),
+(NULL, 'st17@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '안OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N', 'tc01@gmail.com', 0),
+(NULL, 'st18@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '송OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N', 'tc01@gmail.com', 0),
+(NULL, 'st19@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '전OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N', 'tc01@gmail.com', 0),
+(NULL, 'st20@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '유OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N', 'tc01@gmail.com', 0),
+(NULL, 'st21@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '고OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N',  'tc02@gmail.com', 0),
+(NULL, 'st22@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '문OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N',  'tc02@gmail.com', 0),
+(NULL, 'st23@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '양OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N',  'tc02@gmail.com', 0),
+(NULL, 'st24@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '손OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N',  'tc02@gmail.com', 0),
+(NULL, 'st25@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '배OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N',  'tc02@gmail.com', 0),
+(NULL, 'st26@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '조OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N',  'tc02@gmail.com', 0),
+(NULL, 'st27@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '백OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N',  'tc02@gmail.com', 0),
+(NULL, 'st28@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '허OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N',  'tc02@gmail.com', 0),
+(NULL, 'st29@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '류OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N',  'tc02@gmail.com', 0),
+(NULL, 'st30@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '남OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N',  'tc02@gmail.com', 0),
+(NULL, 'st31@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '심OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N',  'tc02@gmail.com', 0),
+(NULL, 'st32@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '노OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N',  'tc02@gmail.com', 0),
+(NULL, 'st33@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '하OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N',  'tc02@gmail.com', 0),
+(NULL, 'st34@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '곽OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N',  'tc02@gmail.com', 0),
+(NULL, 'st35@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '성OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N',  'tc02@gmail.com', 0),
+(NULL, 'st36@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '차OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N',  'tc02@gmail.com', 0),
+(NULL, 'st37@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '주OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N',  'tc02@gmail.com', 0),
+(NULL, 'st38@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '우OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N',  'tc02@gmail.com', 0),
+(NULL, 'st39@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '구OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N',  'tc02@gmail.com', 0),
+(NULL, 'st40@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', 'KG', '신OO', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  sysdate(), 'PUSH_TOKEN', NULL, 'N', NULL, 0 , 'N',  'tc02@gmail.com', 0);
+
+INSERT INTO st_sch_1_0.st_teeth_info
+(USER_NO, USER_ID, TEETH_STATUS, RECORD_DT, TEACHER_ID)
+VALUES(NULL, 'st01@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate(), 'tc01@gmail.com'),
+(NULL, 'st02@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc01@gmail.com'),
+(NULL, 'st03@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc01@gmail.com'),
+(NULL, 'st04@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc01@gmail.com'),
+(NULL, 'st05@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc01@gmail.com'),
+(NULL, 'st06@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc01@gmail.com'),
+(NULL, 'st07@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc01@gmail.com'),
+(NULL, 'st08@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc01@gmail.com'),
+(NULL, 'st09@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc01@gmail.com'),
+(NULL, 'st10@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc01@gmail.com'),
+(NULL, 'st11@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc01@gmail.com'),
+(NULL, 'st12@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc01@gmail.com'),
+(NULL, 'st13@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc01@gmail.com'),
+(NULL, 'st14@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc01@gmail.com'),
+(NULL, 'st15@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc01@gmail.com'),
+(NULL, 'st16@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc01@gmail.com'),
+(NULL, 'st17@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc01@gmail.com'),
+(NULL, 'st18@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc01@gmail.com'),
+(NULL, 'st19@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc01@gmail.com'),
+(NULL, 'st20@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc01@gmail.com'),
+(NULL, 'st21@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc02@gmail.com'),
+(NULL, 'st22@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc02@gmail.com'),
+(NULL, 'st23@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc02@gmail.com'),
+(NULL, 'st24@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc02@gmail.com'),
+(NULL, 'st25@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc02@gmail.com'),
+(NULL, 'st26@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc02@gmail.com'),
+(NULL, 'st27@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc02@gmail.com'),
+(NULL, 'st28@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc02@gmail.com'),
+(NULL, 'st29@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc02@gmail.com'),
+(NULL, 'st30@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc02@gmail.com'),
+(NULL, 'st31@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc02@gmail.com'),
+(NULL, 'st32@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc02@gmail.com'),
+(NULL, 'st33@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc02@gmail.com'),
+(NULL, 'st34@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc02@gmail.com'),
+(NULL, 'st35@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc02@gmail.com'),
+(NULL, 'st36@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc02@gmail.com'),
+(NULL, 'st37@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc02@gmail.com'),
+(NULL, 'st38@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc02@gmail.com'),
+(NULL, 'st39@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc02@gmail.com'),
+(NULL, 'st40@gmail.com', '200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|200|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100', sysdate() 'tc02@gmail.com');
+
+
+
+
+
+INSERT INTO ST_ST_USER
+(USER_NO, USER_ID, USER_PWD, USER_TYPE, USER_NM, USER_COUNTRY, USER_STATE, USER_ADDRESS, USER_TEL_NO, USER_BIRTHDAY, USER_SEX, USER_RGST_DT, PUSH_TOKEN, LOGIN_DT, USER_DELETE_YN, USER_DELETE_DT, LOGIN_CK, IS_MEASURING, TEACHER_ID)
+VALUES
+(NULL, 'st01@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '남궁OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc01@gmail.com'),
+(NULL, 'st02@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '김OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc01@gmail.com'),
+(NULL, 'st03@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '이OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc01@gmail.com'),
+(NULL, 'st04@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '박OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc01@gmail.com'),
+(NULL, 'st05@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '최OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc01@gmail.com'),
+(NULL, 'st06@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '김OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc01@gmail.com'),
+(NULL, 'st07@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '강OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc01@gmail.com'),
+(NULL, 'st08@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '조OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc01@gmail.com'),
+(NULL, 'st09@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '윤OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc01@gmail.com'),
+(NULL, 'st10@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '장OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc01@gmail.com'),
+(NULL, 'st11@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '임OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc01@gmail.com'),
+(NULL, 'st12@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '한OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc01@gmail.com'),
+(NULL, 'st13@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '오OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc01@gmail.com'),
+(NULL, 'st14@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '신OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc01@gmail.com'),
+(NULL, 'st15@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '권OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc01@gmail.com'),
+(NULL, 'st16@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '황OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc01@gmail.com'),
+(NULL, 'st17@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '안OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc01@gmail.com'),
+(NULL, 'st18@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '송OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc01@gmail.com'),
+(NULL, 'st19@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '전OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc01@gmail.com'),
+(NULL, 'st20@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '유OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc01@gmail.com'),
+(NULL, 'st21@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '고OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc02@gmail.com'),
+(NULL, 'st22@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '문OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc02@gmail.com'),
+(NULL, 'st23@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '양OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc02@gmail.com'),
+(NULL, 'st24@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '손OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc02@gmail.com'),
+(NULL, 'st25@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '배OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc02@gmail.com'),
+(NULL, 'st26@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '조OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc02@gmail.com'),
+(NULL, 'st27@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '백OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc02@gmail.com'),
+(NULL, 'st28@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '허OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc02@gmail.com'),
+(NULL, 'st29@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '류OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc02@gmail.com'),
+(NULL, 'st30@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '남OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc02@gmail.com'),
+(NULL, 'st31@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '심OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc02@gmail.com'),
+(NULL, 'st32@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '노OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc02@gmail.com'),
+(NULL, 'st33@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '하OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc02@gmail.com'),
+(NULL, 'st34@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '곽OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc02@gmail.com'),
+(NULL, 'st35@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '성OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc02@gmail.com'),
+(NULL, 'st36@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '차OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc02@gmail.com'),
+(NULL, 'st37@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '주OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc02@gmail.com'),
+(NULL, 'st38@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '우OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc02@gmail.com'),
+(NULL, 'st39@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '구OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'F',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc02@gmail.com'),
+(NULL, 'st40@gmail.com', 'a2GnaSmhxGUmhjSmVwiouA==', '신OO', 'KG', 'KR', NULL, '서울시', '010-0000-0000', '2018-01-01', 'M',  NULL, 'PUSH_TOKEN', NULL, 'N', NULL, 0, 'N', 'tc02@gmail.com');
+
+   ,"t01" : "12"
+   ,"t02" : "9"
+   ,"t03" : "4"
+   ,"t04" : "3"
+   ,"t05" : "18"
+   ,"t06" : "8"
+   ,"t07" : "17"
+   ,"t08" : "11"
+   ,"t09" : "5"
+   ,"t10" : "15"
+   ,"t11" : "12"
+   ,"t12" : "6"
+   ,"t13" : "16"
+   ,"t14" : "18"
+   ,"t15" : "17"
+   ,"t16" : "7"
+   ,"t17" : "8"
+   ,"t18" : "4"
+   ,"t19" : "3"
+   ,"t20" : "3"
+   ,"t21" : "10"
+   ,"t22" : "14"
+   ,"t23" : "33"
+   ,"t24" : "30"
+   ,"t25" : "18"
+   ,"t26" : "11"
+   ,"t27" : "10"
+   ,"t28" : "22"
+   ,"t29" : "10"
+   ,"t30" : "8"
+   ,"t31" : "6"
+   ,"t32" : "2"
+   
+
+
+12	9	4	3	18	8	17	11	5	15	12	6	16	18	17	7	8	4	3	3	10	14	33	30	18	11	10	22	10	8	6	2
+
+
+
+
+      
+      
+      
+      
+      3
+      18
+      8
+      17
+      11
+      5"
+      15
+      12
+      6
+      16
+      18
+      17
+      7
+      8
+      4
+      3
+      3
+      10
+      14
+      33
+      30
+      18
+      11
+      10
+      22
+      10
+      8
+      6
+      
