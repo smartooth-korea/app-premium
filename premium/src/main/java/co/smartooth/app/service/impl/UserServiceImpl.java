@@ -132,5 +132,34 @@ public class UserServiceImpl implements UserService{
 		return userMapper.selectStUserListByTc(userId, orderBy);
 	}
 
+
+	
+	
+	
+	
+	// 학생 회원 상세 정보 등록
+	@Override
+	public void insertStudentUserDetail(UserVO userVO) throws Exception {
+		userMapper.insertStudentUserDetail(userVO);
+	}
+
+
+	
+	// 선생님 ID로 테스트계정 목록 조회
+	@Override
+	public List<UserVO> selectTestUserListByTc(@Param("userId") String userId, @Param("userName") String userName) throws Exception {
+		return userMapper.selectTestUserListByTc(userId, userName);
+	}
+
+
+	// 학생 이름 업데이트
+	@Override
+	public void updateTestUserName(String userId, String userName) throws Exception {
+		userMapper.updateTestUserName(userId, userName);
+	}
+	
+	
+	
+
 	
 }

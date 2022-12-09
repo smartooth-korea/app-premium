@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.smartooth.web.mapper.WebUserMapper">
+
+
+<!-- 로그인 시 회원 정보조회 -->
+    <select id="selectUserInfo" parameterType="co.smartooth.web.vo.WebUserVO" resultType="co.smartooth.web.vo.WebUserVO">
+         SELECT USER_NO
+         			,USER_ID
+<!-- 				    ,USER_NM -->
+					,USER_NAME
+				    ,DATE_FORMAT(USER_RGST_DT, '%Y-%m-%d') AS USER_RGST_DT
+				    ,USER_DELETE_YN
+				    ,DATE_FORMAT(USER_DELETE_DT, '%Y-%m-%d') AS USER_DELETE_DT
+				    ,DATE_FORMAT(LOGIN_DT, '%Y-%m-%d') AS LOGIN_DT
+				    ,LOGIN_CK
+				    ,USER_TYPE
+		FROM ST_USER
+		WHERE 1=1
+		<if test="userId != null and userId != '' ">
+			AND USER_ID = #{userId}
+   		</if> 
+    </select>
+
+
+<!-- 	학생 정보 및 측정 데이터 조회 (학생 한명) -->
+	<select id="selectStUserInfo" parameterType="String" resultType="hashmap">
+<!-- 			SELECT SSU.USER_NM														AS userNm -->
+			SELECT SSU.USER_NAME														AS userName
+				       ,SSU.USER_ID 														AS userId
+				       ,SSU.USER_TYPE 													AS userType
+				       ,SSU.LOGIN_DT														AS loginDt
+				       ,SSU.LOGIN_CK														AS loginCk
+				       ,SSU.CAVITY_CNT													AS cavityCnt
+				       ,SSU.COUNTRY_NM												AS countryNm
+				       ,SSU.STATE_NM													AS stateNm
+				       ,SSU.SIDO_NM														AS sidoNm
+				       ,SSU.SIGUNGU_NM													AS sigunguNm
+				       ,SSU.EUPMYEONDONG_NM										AS eupmyeondongNm
+				       ,SSU.ADDR_DETAIL												AS addrDeail
+<!-- 				       ,SSU.USER_ADDRESS												AS userAddress -->
+				       ,SSU.USER_TEL_NO												AS userTelNo
+				       ,DATE_FORMAT(SSU.USER_BIRTHDAY, '%Y-%m-%d') 	AS USER_BIRTHDAY
+				       ,SMT.T01 ,SMT.T02 ,SMT.T03 ,SMT.T04 ,SMT.T05 
+				       ,SMT.T06 ,SMT.T07 ,SMT.T08 ,SMT.T09 ,SMT.T10
+				       ,SMT.T11 ,SMT.T12 ,SMT.T13 ,SMT.T14 ,SMT.T15 
+				       ,SMT.T16 ,SMT.T17 ,SMT.T18 ,SMT.T19 ,SMT.T20
+				       ,SMT.T21 ,SMT.T22 ,SMT.T23 ,SMT.T24 ,SMT.T25 
+				       ,SMT.T26 ,SMT.T27 ,SMT.T28 ,SMT.T29 ,SMT.T30 
+				       ,SMT.T31 ,SMT.T32
+				       ,DATE_FORMAT(SMT.MEASURE_DT, '%Y년%m월%d일')		AS measureDt
+			       	   ,DATE_FORMAT(SMT.MEASURE_DT, '%Y-%m-%d')		AS measureDtDash
+				       ,SMT.MEASURER_ID												AS measureId
+				       
+			FROM ST_TEETH_MEASURE SMT
+		    LEFT OUTER JOIN ST_ST_USER SSU
+			ON SMT.USER_ID = SSU.USER_ID
+			WHERE  1 = 1
+            AND SSU.USER_ID = #{userId}
+            ORDER BY SMT.MEASURE_DT DESC
+<!--        	<if test="startDt != null and startDt != '' and endDt != null and endDt !=''"> -->
+<!--             AND DATE_FORMAT(MEASURE_DT, '%Y-%M-%D') BETWEEN #{startDt} AND #{endDt} -->
+<!--        	</if> -->
+	</select> 
+</mapper>

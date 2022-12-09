@@ -5,41 +5,57 @@ import java.io.Serializable;
 public class TeethMeasureVO implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
+	
 	// 회원 이름 : 추가된 내용
 	private String userName;
+	
 	// 회원 번호
 	private String userNo;
+	
 	// 회원 아이디
 	private String userId;
+	
 	// 검색 (시작일)
 	private String startDt;
+	
 	// 검색 (종료일)
 	private String endDt;
+	
 	// 치아 측정 일자
 	private String measureDt;
+	
 	// 32개의 치아 변수
 	private int t01, t02, t03 ,t04 ,t05 ,t06 ,t07 ,t08 ,t09 ,t10
 	,t11 ,t12 ,t13 ,t14 ,t15 ,t16 ,t17 ,t18 ,t19 ,t20 ,t21 ,t22
 	,t23 ,t24 ,t25 ,t26 ,t27 ,t28 ,t29 ,t30 ,t31 ,t32;
 	
-	// 충치 상태에 따른 치아 개수
-	// 정상 수치 0~12 이하
+	// 치아에 대한 진단 코드
+	private String diagCd;
+	
+	
+	private String memo;
+	
+	
+	/**충치 상태에 따른 치아 개수*/
+	
+	// 정상 수치 개수
 	private int cavityNormal;
-	// 주의 수치 13~20 이하 
+	
+	// 주의 수치 개수 
 	private int cavityCaution;
-	// 경고 수치 20이상 29이하
-    private int cavityWarning;
-    // 위험 수치 30이상
-     private int cavityDanger;
+    
+	// 충치 수치 개수
+    private int cavityDanger;
     
     // 측정인 아이디
     private String measurerId;
+    
+    // 학교 이름
+    private String schoolName;
+    
+    
+    
 	
-    
-    
-    
-    
-    
 	public String getUserName() {
         return userName;
     }
@@ -263,14 +279,23 @@ public class TeethMeasureVO implements Serializable {
 	public void setT32(int t32) {
 		this.t32 = t32;
 	}
+	
+	
+	
+	
+	
+	public String getDiagCd() {
+		return diagCd;
+	}
+	public void setDiagCd(String diagCd) {
+		this.diagCd = diagCd;
+	}
 	public String getMeasureDt() {
 		return measureDt;
 	}
 	public void setMeasureDt(String measureDt) {
 		this.measureDt = measureDt;
 	}
-	
-   
 	
 	
     public int getCavityNormal() {
@@ -285,12 +310,6 @@ public class TeethMeasureVO implements Serializable {
     public void setCavityCaution(int cavityCaution) {
         this.cavityCaution = cavityCaution;
     }
-    public int getCavityWarning() {
-        return cavityWarning;
-    }
-    public void setCavityWarning(int cavityWarning) {
-        this.cavityWarning = cavityWarning;
-    }
     public int getCavityDanger() {
         return cavityDanger;
     }
@@ -299,13 +318,25 @@ public class TeethMeasureVO implements Serializable {
     }
     
     
-    
-    
     public String getMeasurerId() {
 		return measurerId;
 	}
 	public void setMeasurerId(String measurerId) {
 		this.measurerId = measurerId;
 	}
+	public String getSchoolName() {
+		return schoolName;
+	}
+	public void setSchoolName(String schoolName) {
+		this.schoolName = schoolName;
+	}
+	public String getMemo() {
+		return memo;
+	}
+	public void setMemo(String memo) {
+		this.memo = memo;
+	}
+	
+	
 	
 }

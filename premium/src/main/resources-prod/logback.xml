@@ -48,9 +48,9 @@
     <logger name="org.apache.catalina" level="ERROR">
     </logger>
     
-    <logger name="org.apache.commons" level="ERROR">
+    <logger name="org.apache.commons.*" level="ERROR">
     </logger>
-    
+
     <logger name="org.springframework" level="ERROR" >
     </logger>
     
@@ -63,6 +63,9 @@
     
     
     <logger name="jdbc" level="DEBUG">
+    </logger>
+
+    <logger name="jdbc.audit" level="ERROR">
     </logger>
     
     <logger name="jdbc.sqlonly" level="DEBUG">
@@ -81,7 +84,7 @@
     </logger>
     
     
-    <root level="DEBUG">
+    <root level="INFO">
        <appender-ref ref="ROLLING"/>
        <appender-ref ref="STDOUT" />
     </root>

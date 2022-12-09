@@ -1,0 +1,1004 @@
+@charset "UTF-8";
+@font-face {
+	font-family: 'AppleSDGothicNeoB';
+	src: url(/fonts/AppleSDGothicNeoB.ttf) format('truetype');
+}
+
+
+.teeth{
+	width:100%;
+	height:100%;
+	object-fit: scale-down;
+}
+
+@media all and (min-width:375px) {
+	
+	body {
+		/* 	background-image: url("/imgs/layout/main/statistics_main_bg.jpg"); */
+		/*     background-image: url("/imgs/layout/main/statistics_main_bg.png");
+		background-size: 375px 840px;
+		background-repeat: no-repeat;
+		background-position-x: center;*/
+		font-family: AppleSDGothicNeoB;
+		margin: 0px 0px 0px 0px;
+		height: 840px;
+
+	}
+	
+	hr{
+	    margin: 11px 0px 0px 15px;
+	    width: 318px;
+	    color: #4b4b4b;
+	    overflow: auto;
+	}
+	
+	.title {
+	    padding-top: 16px;
+	    height: 40px;
+	    text-align: center;
+	    font-size: 14px;
+	}
+	
+	.contents{
+       height: 198px;
+    	width: 352px;
+	}
+	
+	#contents{
+	    margin: 10px 0px 0px 28px;
+	    height: 125px;
+	    width: 300px;
+	    overflow: auto;
+	    font-weight: normal;
+	    font-size: 13px;
+	    color: #4B4B4B;
+	}
+	
+	.container {
+		background-image: url("/imgs/layout/main/statistics_main_bg_cp.png");
+		background-size: 375px 840px;
+		background-repeat: no-repeat;
+		background-position-x: center; 
+		height: 840px;
+		overflow: hidden;
+	}
+	
+	.contentsWrap {
+		float: left;
+		width: 257px;
+		height: 382px;
+	}
+	
+	.toothCondition {
+		float: left;
+	    width: 222px;
+	    height: 382px;
+	}
+	
+	.cavityAmount {
+	    width: 375px;
+	    margin-left: 0%;
+	    height: 400px;
+	}
+	
+	.comment {
+		width: 352px;
+	    margin-left: 12px;
+        height: 330px;
+	}
+	
+	#bottom{
+	    margin: 0px 25px 0px 25px;
+	    height: 40px;
+	    font-size: 12px;
+	    color: #000000;
+	}
+
+	.menu{
+		height: 42px;
+	    
+	}
+		
+	.f1{
+		float: left;
+	    width: 49%;
+	    height: 40px;
+	    padding-top: 15px;
+	    text-align: center;
+	    font-size: 17px;
+	    border: 1px solid #d5d5d5;
+	}
+	
+	.f1:hover{
+		cursor: pointer;
+	}
+	
+	.f2{
+	    float: left;
+	    width: 49.8%;
+	    height: 40px;
+	    text-align: center;
+	    padding-top: 15px;
+	    font-size: 17px;
+	    border: 1px solid #d5d5d5;
+	}
+	
+	.f2:hover{
+		cursor: pointer;
+	}
+	
+	.container-top{
+		height: 95px;
+	}
+	
+	.container-margin{
+		height: 33px;
+	}
+	
+	.a {
+		width: 38%;
+	    float: left;
+	    margin-left: 12%;
+	    font-size: 25px;
+	}
+	
+	.b {
+		width: 39%;
+	    float: left;
+	    margin-right: 8%;
+	    padding-top: 15px;
+	    text-align: right;
+	    font-size: 17px;
+	}
+	
+	
+	#t51 {
+	    position: absolute;
+	    top: 312px;
+	    left: 24px;
+	    width: 39px;
+	    height: 44px;
+	}
+	
+	#t52 {
+        position: absolute;
+	    top: 276px;
+	    left: 31px;
+	    width: 39px;
+	    height: 38px;
+	}
+	
+	#t53 {
+	    position: absolute;
+	    top: 249px;
+	    left: 47px;
+	    width: 27px;
+	    height: 30px;
+	}
+	
+	#t54 {
+		position: absolute;
+	    top: 228px;
+	    left: 65px;
+	    width: 25px;
+	    height: 27px;
+	}
+	
+	#t55 {
+		position: absolute;
+	    top: 218px;
+	    left: 86px;
+	    width: 34px;
+	    height: 23px;
+	}
+	
+	
+	#t61 {
+		position: absolute;
+	    top: 217px;
+	    left: 119px;
+	    width: 33px;
+	    height: 24px;
+	}
+	
+	#t62 {
+		position: absolute;
+	    top: 226px;
+	    left: 149px;
+	    width: 25px;
+	    height: 29px;
+	}
+	
+	#t63 {
+        position: absolute;
+	    top: 248px;
+	    left: 164px;
+	    width: 28px;
+	    height: 32px;
+	}
+	
+	#t64 {
+	    position: absolute;
+	    top: 276px;
+	    left: 168px;
+	    width: 37px;
+	    height: 37px;
+	}
+	
+	#t65 {
+		position: absolute;
+	    top: 311px;
+	    left: 175px;
+	    width: 39px;
+	    height: 45px;
+	}
+	
+	
+	#t71 {
+	    position: absolute;
+    	top: 485px;
+	    left: 119px;
+	    width: 21px;
+	    height: 17px;
+	}
+	
+	#t72 {
+        position: absolute;
+	    top: 478px;
+	    left: 138px;
+	    width: 20px;
+	    height: 20px;
+	}
+	
+	#t73 {
+		position: absolute;
+	    top: 459px;
+	    left: 150px;
+	    width: 26px;
+	    height: 28px;
+	}
+	
+	#t74 {
+	    position: absolute;
+	    top: 429px;
+	    left: 163px;
+	    width: 33px;
+	    height: 36px;
+	}
+	
+	#t75 {
+	    position: absolute;
+	    top: 392px;
+	    left: 173px;
+	    width: 38px;
+	    height: 43px;
+	}
+	
+	#t81 {
+        position: absolute;
+	    top: 486px;
+	    left: 100px;
+	    width: 20px;
+	    height: 16px;
+	}
+	
+	#t82 {
+		position: absolute;
+	    top: 478px;
+	    left: 81px;
+	    width: 22px;
+	    height: 20px;
+	}
+	
+	#t83 {
+		position: absolute;
+	    top: 458px;
+	    left: 63px;
+	    width: 26px;
+	    height: 29px;
+	}
+	
+	#t84 {
+		position: absolute;
+	    top: 429px;
+	    left: 41px;
+	    width: 35px;
+	    height: 35px;
+	}
+	
+	#t85 {
+	    position: absolute;
+	    top: 393px;
+	    left: 27px;
+	    width: 40px;
+	    height: 40px;
+	}
+	
+	
+	.titleWidhtAutoHeight30 {
+		width: auto;
+	    height: 30px;
+	    text-align: center;
+	    padding-top: 12px;
+	}
+	
+	.comment-top {
+		width: auto;
+	    height: 53px;
+	}
+	
+	
+	.commonWidth125Height25 {
+		width: 120px;
+		height: 25px;
+	}
+	
+	.commonWidthAutoHeight8 {
+		width: auto;
+	    height: 8px;
+	}
+	
+	.cavityValueHeight-top {
+		width: auto;
+	    height: 30px;
+	}
+	
+	.cavityValueHeight-button{
+		width: auto;
+	    height: 30px;
+	}
+	
+	.cavityValueHeight-header{
+		width: auto;
+		height: 38px;
+	}
+	
+	.cavityValueHeight {
+		width: auto;
+		height: 75px;
+	}
+
+	.cavityValue {
+		height: 25px;
+	    margin-right: 7px;
+	    font-size: 22px;
+	    font-weight: bold;
+	    text-align: center;
+	}
+}
+
+
+
+
+/* 375px, 390px START */
+/* 375px, 390px START */
+/* 375px, 390px START */
+/* 375px, 390px START */
+
+
+
+
+@media all and (min-width:390px) {
+	
+	body {
+		/* 	background-image: url("/imgs/layout/main/statistics_main_bg.jpg"); */
+		background-image: url("/imgs/layout/main/statistics_main_bg.png");
+		background-size: 390px 915px;
+		background-repeat: no-repeat;
+		background-position-x: center;
+		font-family: AppleSDGothicNeoB;
+		margin: 0px 0px 0px 0px;
+		height: 915px;
+	}
+	
+	.title {
+		padding-top: 18px;
+	    height: 36px;
+	    text-align: center;
+	}
+	
+	.contents{
+		height: 112px;
+    	width: 390px;
+	}
+	
+	#contents{
+	    margin: 18px 0px 0px 40px;
+	    height: 145px;
+	    width: 310px;
+	    overflow: auto;
+	    font-weight: normal;
+	    font-size: 14px;
+	    color: #4B4B4B;
+	}
+	
+	.container-margin {
+    	height: 37px;
+	}
+	
+	.container-top {
+	    height: 101px;
+	}
+	
+	.container {
+		width: 100%;
+		height: 740px;
+	}
+	
+	.contentsWrap {
+		float: left;
+	    width: 257px;
+	    height: 411px;
+	}
+	
+	.toothCondition {
+	    float: left;
+	    width: 250px;
+	    height: 411px;
+	}
+	
+	.cavityAmount {
+		width: 131px;
+	    margin-left: 250px;
+	    height: 411px;
+	}
+	
+	.comment {
+		width: 390px;
+   		margin-left: 0px;
+	}
+	
+	.menu{
+		height: 46px;
+	}
+	
+	.f1{
+		float: left;
+	    width: 49%;
+	    height: 40px;
+	    padding-top: 15px;
+	    text-align: center;
+	    font-size: 17px;
+	    border: 1px solid #959595;
+	}
+	
+	.f1:hover{
+		cursor: pointer;
+	}
+	
+	.f2{
+	    float: left;
+	    width: 49.8%;
+	    height: 40px;
+	    text-align: center;
+	    padding-top: 15px;
+	    font-size: 17px;
+	    border: 1px solid #959595;
+	}
+	
+	.f2:hover{
+		cursor: pointer;
+	}
+	
+	.a {
+	    width: 39.5%;
+	    float: left;
+	    margin-left: 11.5%;
+	    font-size: 27px;
+	}
+	
+	.b {
+		width: 37.5%;
+	    float: left;
+	    margin-right: 8%;
+	    padding-top: 16px;
+	    text-align: right;
+	    font-size: 17px;
+	}
+	
+	.cavityValueHeight-header{
+		width: auto;
+		height: 44px;
+	}
+	
+	.cavityValueHeight {
+	    width: auto;
+	    height: 80px;
+	}
+	
+	
+	#t51 {
+		position: absolute;
+	    top: 326px;
+	    left: 26px;
+	    width: 39px;
+	    height: 47px;
+	}
+	
+	#t52 {
+	    position: absolute;
+	    top: 290px;
+	    left: 34px;
+	    width: 40px;
+	    height: 38px;
+	}
+	
+	#t53 {
+	    position: absolute;
+	    top: 262px;
+	    left: 49px;
+	    width: 28px;
+	    height: 31px;
+	}
+	
+	#t54 {
+		position: absolute;
+	    top: 239px;
+	    left: 68px;
+	    width: 25px;
+	    height: 29px;
+	}
+	
+	#t55 {
+		position: absolute;
+	    top: 229px;
+	    left: 91px;
+	    width: 33px;
+	    height: 26px;
+	}
+	
+	
+	#t61 {
+	    position: absolute;
+	    top: 229px;
+	    left: 124px;
+	    width: 34px;
+	    height: 26px;
+	}
+	
+	#t62 {
+		position: absolute;
+	    top: 238px;
+	    left: 156px;
+	    width: 26px;
+	    height: 32px;
+	}
+	
+	#t63 {
+	    position: absolute;
+	    top: 259px;
+	    left: 172px;
+	    width: 27px;
+	    height: 38px;
+	}
+	
+	#t64 {
+	    position: absolute;
+	    top: 290px;
+	    left: 175px;
+	    width: 39px;
+	    height: 38px;
+	}
+	
+	#t65 {
+	    position: absolute;
+	    top: 326px;
+	    left: 183px;
+	    width: 40px;
+	    height: 46px;
+	}
+	
+	
+	#t71 {
+		position: absolute;
+	    top: 506px;
+	    left: 124px;
+	    width: 21px;
+	    height: 17px;
+	}
+	
+	#t72 {
+	    position: absolute;
+	    top: 498px;
+	    left: 143px;
+	    width: 21px;
+	    height: 21px;
+	}
+	
+	#t73 {
+        position: absolute;
+	    top: 478px;
+	    left: 156px;
+	    width: 26px;
+    	height: 29px;
+	}
+	
+	#t74 {
+		position: absolute;
+	    top: 449px;
+	    left: 170px;
+	    width: 34px;
+	    height: 36px;
+	}
+	
+	#t75 {
+		position: absolute;
+	    top: 410px;
+	    left: 180px;
+	    width: 39px;
+	    height: 43px;
+	}
+	
+	#t81 {
+		position: absolute;
+		top: 507px;
+	    left: 105px;
+	    width: 19px;
+	    height: 16px;
+	}
+	
+	#t82 {
+		position: absolute;
+	    top: 498px;
+	    left: 85px;
+	    width: 22px;
+	    height: 21px;
+	}
+	
+	#t83 {
+	    position: absolute;
+	    top: 476px;
+	    left: 65px;
+	    width: 27px;
+	    height: 32px;
+	}
+	
+	#t84 {
+	    position: absolute;
+	    top: 448px;
+	    left: 44px;
+	    width: 35px;
+	    height: 37px;
+	}
+	
+	#t85 {
+	    position: absolute;
+	    top: 410px;
+	    left: 29px;
+	    width: 40px;
+	    height: 43px;
+	}
+	
+	.cavityValueHeight-top {
+		width: auto;
+	    height: 30px;
+	}
+	
+	.cavityValue {
+		height: 23px;
+	    margin-right: 18px;
+	    font-size: 22px;
+	    font-weight: bold;
+	    text-align: center;
+	}
+	
+	.comment-top {
+		width: auto;
+	    height: 58px;
+	}
+}
+	
+	
+	
+	
+	
+@media all and (min-width:412px) {
+	
+	body {
+		/* 	background-image: url("/imgs/layout/main/statistics_main_bg.jpg"); */
+		background-image: url("/imgs/layout/main/statistics_main_bg.png");
+		background-size: 412px 915px;
+		background-repeat: no-repeat;
+		background-position-x: center;
+		font-family: AppleSDGothicNeoB;
+		margin: 0px 0px 0px 0px;
+
+	}
+		
+	.title {
+		padding-top: 18px;
+	    height: 32px;
+	    text-align: center;
+	    font-size: 15px;
+	}
+	
+	.contents{
+		width: auto;
+	    height: 238px;
+	}
+	
+	#contents{
+        margin: 21px 0px 0px 43px;
+	    height: 148px;
+	    width: 325px;
+	    overflow: auto;
+	    font-weight: normal;
+	    font-size: 14px;
+	    color: #4B4B4B;
+	}
+	
+	.container {
+	    width: 100%;
+	    height: 856px;
+	}
+	
+	.toothCondition {
+	    float: left;
+	    width: 260px;
+	    height: 411px;
+	}
+	
+	.cavityAmount {
+	    width: 138px;
+	    margin-left: 258px;
+	    height: 411px;
+	}
+	
+	.comment {
+		width: 412px;
+    	height: 59px;
+	}
+	
+	.menu {
+    	height: 46px;
+	}
+	
+	.f1{
+		float: left;
+	    width: 49%;
+	    height: 40px;
+	    padding-top: 15px;
+	    text-align: center;
+	    font-size: 17px;
+	    border: 1px solid #d5d5d5;
+	}
+	
+	.f1:hover{
+		cursor: pointer;
+	}
+	
+	.f2{
+	    float: left;
+	    width: 49.8%;
+	    height: 40px;
+	    text-align: center;
+	    padding-top: 15px;
+	    font-size: 17px;
+	    border: 1px solid #d5d5d5;
+	}
+	
+	.f2:hover{
+		cursor: pointer;
+	}
+	
+	.a {
+		width: 39%;
+	    float: left;
+	    margin-left: 11.5%;
+	    font-size: 25px;
+	}
+	
+	.b {
+		width: 37%;
+	    float: left;
+	    margin-right: 8%;
+	    padding-top: 15px;
+	    text-align: right;
+	    font-size: 17px;
+	}
+	
+	
+	#t51 {
+		position: absolute;
+	    top: 325px;
+	    left: 26px;
+	    width: 43px;
+	    height: 48px;
+	}
+	
+	#t52 {
+        position: absolute;
+	    top: 290px;
+	    left: 33px;
+	    width: 46px;
+	    height: 39px;
+	}
+	
+	#t53 {
+		position: absolute;
+	    top: 260px;
+	    left: 53px;
+	    width: 27px;
+	    height: 34px;
+	}
+	
+	#t54 {
+		position: absolute;
+	    top: 240px;
+	    left: 71px;
+	    width: 26px;
+	    height: 27px;
+	}
+	
+	#t55 {
+		position: absolute;
+	    top: 230px;
+	    left: 95px;
+	    width: 36px;
+	    height: 25px;
+	}
+	
+	
+	#t61 {
+	    position: absolute;
+	    top: 230px;
+	    left: 131px;
+	    width: 35px;
+	    height: 25px;
+	}
+	
+	#t62 {
+	    position: absolute;
+	    top: 238px;
+	    left: 165px;
+	    width: 26px;
+	    height: 30px;
+	}
+	
+	#t63 {
+	    position: absolute;
+	    top: 261px;
+	    left: 181px;
+	    width: 28px;
+	    height: 33px;
+	}
+	
+	#t64 {
+		position: absolute;
+	    top: 289px;
+	    left: 185px;
+	    width: 40px;
+	    height: 40px;
+	}
+	
+	#t65 {
+		position: absolute;
+	    top: 301px;
+	    left: 195px;
+	    width: 38px;
+	    height: 44px;
+	}
+	
+	
+	#t71 {
+	    position: absolute;
+	    top: 506px;
+	    left: 132px;
+	    width: 20px;
+	    height: 18px;
+	}
+	
+	#t72 {
+		position: absolute;
+	    top: 499px;
+	    left: 150px;
+	    width: 21px;
+	    height: 20px;
+	}
+	
+	#t73 {
+		position: absolute;
+	    top: 478px;
+	    left: 166px;
+	    width: 27px;
+	    height: 30px;
+	}
+	
+	#t74 {
+        position: absolute;
+	    top: 449px;
+	    left: 181px;
+	    width: 34px;
+	    height: 37px;
+	}
+	
+	#t75 {
+        position: absolute;
+	    top: 411px;
+	    left: 190px;
+	    width: 42px;
+	    height: 42px;
+	}
+	
+	#t81 {
+	    position: absolute;
+	    top: 506px;
+	    left: 110px;
+	    width: 21px;
+	    height: 17px;
+	}
+	
+	#t82 {
+		position: absolute;
+	    top: 498px;
+	    left: 88px;
+	    width: 24px;
+	    height: 21px;
+	}
+	
+	#t83 {
+		position: absolute;
+	    top: 477px;
+	    left: 70px;
+	    width: 27px;
+	    height: 31px;
+	}
+	
+	#t84 {
+		position: absolute;
+	    top: 448px;
+	    left: 47px;
+	    width: 34px;
+	    height: 37px;
+	}
+	
+	#t85 {
+	    top: 410px;
+	    left: 32px;
+	    width: 40px;
+	    height: 42px;
+	}
+	
+	.contents  {
+		width: auto;
+	    height: 190px;
+	}
+	
+	.commonWidth125Height25 {
+		width: 120px;
+		height: 25px;
+	}
+	
+	.commonWidthAutoHeight8 {
+		width: auto;
+	    height: 8px;
+	}
+	
+	.cavityValueHeight-top {
+		width: auto;
+	    height: 24px;
+	}
+	
+	.commonWidthAutoHeight27{
+		width: auto;
+	    height: 27px;
+	}
+	
+	.commonWidthAutoHeight70 {
+		width: auto;
+		height: 70px;
+	}
+
+	.cavityValue {
+		height: 23px;
+	    margin-right: 7px;
+	    font-size: 22px;
+	    font-weight: bold;
+	    text-align: center;
+	}
+	
+	.cavityValueHeight-header{
+		width: auto;
+		height: 50px;
+	}
+}

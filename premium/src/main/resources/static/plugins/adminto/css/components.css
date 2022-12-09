@@ -123,8 +123,8 @@ File: Components
   border: 1px solid #0eac5c !important;
 }
 .btn-info {
-  background-color: #35b8e0 !important;
-  border: 1px solid #35b8e0 !important;
+  background-color: #318CDD !important;
+  border: 1px solid #318CDD !important;
 }
 .btn-info:hover,
 .btn-info:focus,
@@ -135,8 +135,8 @@ File: Components
 .btn-info:focus,
 .btn-info:hover,
 .open > .dropdown-toggle.btn-info {
-  background-color: #21afda !important;
-  border: 1px solid #21afda !important;
+  background-color: #318CDD !important;
+  border: 1px solid #318CDD !important;
 }
 .btn-warning {
   background-color: #f9c851 !important;
@@ -268,7 +268,7 @@ File: Components
 .btn-trans.btn-info {
   border: 1px solid rgba(53, 184, 224, 0.2) !important;
   background-color: rgba(53, 184, 224, 0.3) !important;
-  color: #35b8e0 !important;
+  color: #318CDD !important;
 }
 .btn-trans.btn-warning {
   border: 1px solid rgba(249, 200, 81, 0.2) !important;
@@ -456,8 +456,8 @@ File: Components
   color: #ffffff;
 }
 .checkbox-info input[type="checkbox"]:checked + label::before {
-  background-color: #35b8e0;
-  border-color: #35b8e0;
+  background-color: #318CDD;
+  border-color: #318CDD;
 }
 .checkbox-info input[type="checkbox"]:checked + label::after {
   color: #ffffff;
@@ -598,13 +598,13 @@ File: Components
   background-color: #ff5b5b;
 }
 .radio-info input[type="radio"] + label::after {
-  background-color: #35b8e0;
+  background-color: #318CDD;
 }
 .radio-info input[type="radio"]:checked + label::before {
-  border-color: #35b8e0;
+  border-color: #318CDD;
 }
 .radio-info input[type="radio"]:checked + label::after {
-  background-color: #35b8e0;
+  background-color: #318CDD;
 }
 .radio-warning input[type="radio"] + label::after {
   background-color: #f9c851;
@@ -691,7 +691,7 @@ File: Components
   background-color: #10c469;
 }
 .panel-info > .panel-heading {
-  background-color: #35b8e0;
+  background-color: #318CDD;
 }
 .panel-warning > .panel-heading {
   background-color: #f9c851;
@@ -729,8 +729,8 @@ File: Components
   color: #10c469 !important;
 }
 .panel-border.panel-info .panel-heading {
-  border-color: #35b8e0 !important;
-  color: #35b8e0 !important;
+  border-color: #318CDD !important;
+  color: #318CDD !important;
 }
 .panel-border.panel-warning .panel-heading {
   border-color: #f9c851 !important;
@@ -969,7 +969,7 @@ File: Components
   background-color: #10c469;
 }
 .progress-bar-info {
-  background-color: #35b8e0;
+  background-color: #318CDD;
 }
 .progress-bar-warning {
   background-color: #f9c851;

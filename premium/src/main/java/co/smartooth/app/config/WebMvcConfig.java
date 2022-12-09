@@ -33,7 +33,43 @@ public class WebMvcConfig implements WebMvcConfigurer{
 		.addResourceLocations("classpath:/static/")
           .setCachePeriod(60*60*24);
 		
-		registry.addResourceHandler("/app/user/**")
+		registry.addResourceHandler("/premium/**")
+		.addResourceLocations("classpath:/static/")
+          .setCachePeriod(60*60*24);
+		
+		registry.addResourceHandler("/premium/user/**")
+		.addResourceLocations("classpath:/static/")
+          .setCachePeriod(60*60*24);
+
+		registry.addResourceHandler("/premium/manage/**")
+		.addResourceLocations("classpath:/static/")
+          .setCachePeriod(60*60*24);
+
+		registry.addResourceHandler("/premium/statistics/**")
+		.addResourceLocations("classpath:/static/")
+		.setCachePeriod(60*60*24);
+
+		registry.addResourceHandler("/premium/admin/**")
+		.addResourceLocations("classpath:/static/")
+		.setCachePeriod(60*60*24);
+
+		registry.addResourceHandler("/premium/admin/main")
+		.addResourceLocations("classpath:/static/")
+		.setCachePeriod(60*60*24);
+
+		registry.addResourceHandler("/premium/admin/organ/**")
+		.addResourceLocations("classpath:/static/")
+		.setCachePeriod(60*60*24);
+
+		registry.addResourceHandler("/premium/admin/user/**")
+		.addResourceLocations("classpath:/static/")
+		.setCachePeriod(60*60*24);
+
+		registry.addResourceHandler("/premium/admin/statistics/**")
+		.addResourceLocations("classpath:/static/")
+		.setCachePeriod(60*60*24);
+		
+		registry.addResourceHandler("/test/**")
 		.addResourceLocations("classpath:/static/")
           .setCachePeriod(60*60*24);
 		

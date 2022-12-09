@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.smartooth.admin.mapper.AdminLocationMapper">
+
+
+	<!-- 위치(loacation) 정보 조회 -->
+    <select id="selectLocationInfo" parameterType="String" resultType="co.smartooth.admin.vo.AdminLocationVO">
+		
+		SELECT 
+			SIDO_CD
+			,SGGEMD_CD
+			,SIGUNGU_NM
+			,EUPMYEONDONG_NM 
+		FROM ST_ADDR_DEPT2
+		WHERE 1=1
+		AND SIDO_CD = #{sidoCd}
+		AND SGGEMD_CD = #{sggemdCd}
+		
+    </select>
+    
+    
+    
+    
+    <select id="selectLocationCd" parameterType="String" resultType="co.smartooth.admin.vo.AdminLocationVO">
+		
+		SELECT 
+			SIDO_CD
+			,SGGEMD_CD
+			,SIGUNGU_NM
+			,EUPMYEONDONG_NM 
+		FROM ST_ADDR_DEPT2
+		WHERE 1=1
+		AND ${searchType} LIKE CONCAT('%',#{ searchData},'%')
+		LIMIT 1
+		
+    </select>
+
+
+
+
+    <select id="selectSidoInfoList" resultType="co.smartooth.admin.vo.AdminLocationVO">
+		
+		SELECT 
+			SIDO_CD
+			,SIDO_NM
+		FROM ST_ADDR_DEPT1
+		
+    </select>
+    
+    
+    
+    
+    <select id="selectSigunguEupmyeondongInfoList" parameterType="String" resultType="co.smartooth.admin.vo.AdminLocationVO">
+		
+		SELECT 
+			SIDO_CD
+			,SGGEMD_CD
+			,SIGUNGU_NM
+			,EUPMYEONDONG_NM
+			,ADDR_SEQ_NO
+		FROM ST_ADDR_DEPT2
+ 		WHERE 1=1 
+ 		<if test="locationType ==  'SIDO_CD'">
+ 		AND ${locationType} = #{locationCd}
+ 		AND EUPMYEONDONG_NM = NULL
+ 		OR EUPMYEONDONG_NM = ''
+ 		</if>
+ 		<if test="locationType ==  'SGGEMD_CD'">
+ 		AND ${locationType} LIKE CONCAT(#{ locationCd},'%')
+ 		LIMIT 1, 1000
+ 		</if>
+		
+    </select>
+	    
+    
+    
+    
+	 <!-- 회원 접속일 UPDATE -->
+    <update id="updateAddrSeqNo" parameterType="co.smartooth.admin.vo.AdminLocationVO">
+		UPDATE ST_ADDR_DEPT2
+  			 SET  ADDR_SEQ_NO= #{addrSeqNo}
+	     WHERE  1=1
+	     AND SGGEMD_CD = #{sggemdCd}
+    </update>
+
+
+
+
+
+</mapper>

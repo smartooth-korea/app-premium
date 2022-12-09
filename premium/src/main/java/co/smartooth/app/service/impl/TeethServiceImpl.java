@@ -3,6 +3,7 @@ package co.smartooth.app.service.impl;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -73,29 +74,27 @@ public class TeethServiceImpl implements TeethService{
 	}
 	
 	
-	
-	// 회원 충치 개수 UPDATE
+	// 회원 치아 측정 값을 저장하기 위해 현재 회원이 측정한 측정 값이 오늘 데이터인지 확인 후 값 반환(0 : 오늘X, 1: 오늘)
 	@Override
-	public void updateUserCavityDangerCnt(TeethMeasureVO teethMeasureVO) throws Exception {
+	public Integer isExistSysDateRow(TeethMeasureVO teethMeasureVO) throws Exception {
+		return teethMapper.isExistSysDateRow(teethMeasureVO);
+	}
+	
+	
+	// 회원 충치 개수 UPDATE (최근) - ST_STUDENT_USER_DETAIL
+	@Override
+	public void updateUserCavityCnt(TeethMeasureVO teethMeasureVO) throws Exception {
 		teethMapper.updateUserCavityCnt(teethMeasureVO);
 	}
-	
-	
-	
-	// 회원 치아 측정 값을 저장하기 위해 현재 회원이 측정한 측정 값이 오늘 데이터인지 확인 후 값 반환(0 : 오늘X, 1: 오늘)
-	@Override
-	public Integer selectUserTeethMeasureValueByDate(TeethMeasureVO teethMeasureVO) throws Exception {
-		return teethMapper.selectUserTeethMeasureValueByDate(teethMeasureVO);
-	}
-	
-	
-	
-	// 회원 치아 측정 값을 저장하기 위해 현재 회원이 측정한 측정 값이 오늘 데이터인지 확인 후 값 반환(0 : 오늘X, 1: 오늘)
-	@Override
-	public Integer selectUserToothMeasureValueByDate(ToothMeasureVO toothMeasureVO) throws Exception {
-		return teethMapper.selectUserToothMeasureValueByDate(toothMeasureVO);
-	}
 
+	
+	
+	// 회원 충치 개수 UPDATE (측정일별)
+	@Override
+	public void updateUserCavityCntByMeasureDt(TeethMeasureVO teethMeasureVO) throws Exception {
+		teethMapper.updateUserCavityCntByMeasureDt(teethMeasureVO);
+	}
+	
 	
 	
 	// 회원의 치아 측정 값 조회 (기간)
@@ -111,13 +110,10 @@ public class TeethServiceImpl implements TeethService{
 	public List<ToothMeasureVO> selectUserToothMeasureValue(ToothMeasureVO toothMeasureVO) throws Exception {
 		return teethMapper.selectUserToothMeasureValue(toothMeasureVO);
 	}
-
-	
-
 	
 	
 	
-	// 학생 회원 치아 측정 상태 목록 조회 (IsMeasuring) 
+	// 회원 치아 측정 상태 목록 조회 (IsMeasuring) 
 	@Override
 	public List<UserVO> selectStUserIsMeasuring(UserVO userVO) throws Exception {
 		return teethMapper.selectStUserIsMeasuring(userVO);
@@ -125,7 +121,7 @@ public class TeethServiceImpl implements TeethService{
 
 	
 	
-    // 학생 회원 치아 측정 상태 업데이트
+    // 회원 치아 측정 상태 업데이트
 	@Override
 	public void updateStUserIsMeasuring(UserVO userVO) throws Exception {
 		teethMapper.updateStUserIsMeasuring(userVO);
@@ -133,17 +129,47 @@ public class TeethServiceImpl implements TeethService{
 
 	
 	
-    // 학생 회원들의 치아 측정 값 조회(가장 최근) -- 아직 컨트롤러에 추가 되지 않음
+	// 회원 치아 측정 값 목록 조회 (최근 3개)
 	@Override
-	public List<TeethMeasureVO> selectUserMeasureValueList(UserVO userVO) throws Exception {
-		return teethMapper.selectUserMeasureValueList(userVO);
+    public List<TeethMeasureVO> selectUserMeasureValueList(@Param("userId") String userId, @Param("startDt") String startDt, @Param("endDt") String endDt) throws Exception {
+		return teethMapper.selectUserMeasureValueList(userId, startDt, endDt);
 	}
 
+    
 
     // 충치 단계별 수치 조회
 	@Override
 	public HashMap<String, Integer> selectCavityLevel() throws Exception {
 		return teethMapper.selectCavityLevel();
 	}
+	
+	
+	// 회원 진단 정보 조회 (측정일)
+	@Override
+	public TeethMeasureVO selectDiagCd(@Param("userId") String userId, @Param("measureDt") String measureDt) throws Exception{
+		return teethMapper.selectDiagCd(userId, measureDt);
+	}
+
+
+	// 회원 진단 정보 업데이트 
+	@Override
+	public void updateDiagCd(@Param("userId") String userId, @Param("diagCd") String diagCd , @Param("measureDt") String measureDt) throws Exception {
+		teethMapper.updateDiagCd(userId, diagCd, measureDt);
+	}
+
+
+	// 회원 비고(메모) 정보 조회 (측정일)
+	@Override
+	public TeethMeasureVO selectMemo(@Param("userId") String userId, @Param("measureDt") String measureDt) throws Exception{
+		return teethMapper.selectMemo(userId, measureDt);
+	}
+	
+	
+	// 회원 비고(메모) 정보 업데이트
+	@Override
+	public void updateMemo(@Param("userId") String userId, @Param("memo") String memo, @Param("measureDt") String measureDt) throws Exception {
+		teethMapper.updateMemo(userId, memo, measureDt);
+	}
+	
 
 }

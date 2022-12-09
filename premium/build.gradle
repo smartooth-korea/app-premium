@@ -77,12 +77,23 @@ dependencies {
 	//compile ('org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4:1.16')
 	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
 	
+	//POI (EXCEL 등 마이크로소프트 사 프로그램 확장자 파싱 Library)
+	implementation group: 'org.apache.poi', name: 'poi', version: '5.2.2'
+	implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '5.2.2'
+	implementation group: 'commons-io', name: 'commons-io', version: '2.11.0'
+	
+	
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	
 	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.7.1'
+	
+	//JSON
+	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+	// gson 사용을 위한 라이브러리
+	implementation 'com.google.code.gson:gson:2.8.6'
 	
 }
 

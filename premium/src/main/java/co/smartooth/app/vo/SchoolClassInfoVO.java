@@ -13,6 +13,8 @@ public class SchoolClassInfoVO implements Serializable {
 	private String classCode;
 	
 	private String className;
+	
+	private String isVisible;
 
 	
 	
@@ -47,4 +49,14 @@ public class SchoolClassInfoVO implements Serializable {
 	public void setClassName(String className) {
 		this.className = className;
 	}
+
+	public String getIsVisible() {
+		return isVisible;
+	}
+
+	public void setIsVisible(String isVisible) {
+		this.isVisible = isVisible;
+	}
+	
+	
 }

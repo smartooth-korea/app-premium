@@ -754,5 +754,67 @@ public class UserController {
 			hm.put("msg", "The token is not valid.");
 		}
 		return hm;
-	}	
+	}
+	
+	
+	
+	/**
+	 * 기능   : 선생님 ID로 반 학생들 목록 조회
+	 * 작성자 : 정주현 
+	 * 작성일 : 2022. 07. 13
+	 * 수정일 : 2022. 08. 02
+	 */
+//	@PostMapping(value = {"/app/user/selectStUserListByTc.do"})
+//	@PostMapping(value = {"/premium/user/selectStUserListByTc.do"})
+//	@ResponseBody
+//		public HashMap<String,Object> selectStUserListByTc(@RequestBody HashMap<String, String> paramMap, HttpServletRequest request) {
+//
+//		String userAuthToken = null;
+//		String userId = null;
+//		String orderBy = null;
+//		HashMap<String,Object> hm = new HashMap<String,Object>();
+//		JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
+//		
+//		// Parameter :: userId 값 검증
+//		userId = (String)paramMap.get("userId");
+//		// (Null 체크 및 공백 체크)
+//		if(userId == null || userId.equals("")) {
+//			hm.put("code", "401");
+//			hm.put("msg", "There is no userId parameter.");
+//			return hm;
+//		}
+//		orderBy = (String)paramMap.get("order");
+//		if(orderBy == null) {
+//			orderBy = "ASC";
+//		}
+//		userAuthToken = request.getHeader("Authorization");
+//		
+//		
+//		List<UserVO> stList = new ArrayList<UserVO>(); 
+//		
+//		tokenValidation = jwtTokenUtil.validateToken(userAuthToken);
+//		
+//		if(tokenValidation1) {
+//
+//			try {
+//				// 선생님 ID로 해당 학생들 목록 조회
+//				stList = userService.selectStUserListByTc(userId, orderBy);
+//			} catch (Exception e) {
+//				hm.put("code", "500");
+//				hm.put("msg", "Server Error.");
+//				e.printStackTrace();
+//			}
+//			hm.put("stList", stList);
+//			hm.put("code", "000");
+//			hm.put("msg", "Success.");
+//		}else {
+//			hm.put("code", "400");
+//			hm.put("msg", "The token is not valid.");
+//		}
+//		return hm;
+//	}
+	
+	
+	
+	
 }

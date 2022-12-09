@@ -79,4 +79,22 @@ public interface UserService {
 	// 선생님 ID로 해당 학생들 목록 조회
 	public List<UserVO> selectStUserListByTc(String userId, String orderBy) throws Exception;
 	
+	
+	
+	
+	
+	
+	// 학생 회원 상세 정보 등록
+	public void insertStudentUserDetail(UserVO userVO) throws Exception;
+	
+	
+	
+	// 선생님 ID로 테스트계정 목록 조회
+	public List<UserVO> selectTestUserListByTc(@Param("userId") String userId, @Param("userName") String userName) throws Exception;
+	
+	
+	
+	// 학생 이름 변경
+	public void updateTestUserName(@Param("userId") String userId, @Param("userName") String userName) throws Exception;
+	
 }

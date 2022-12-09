@@ -1,5 +1,5 @@
 #PROD SERVER
-#스마투스 일반 앱 서버 설정
+#스마투스 프리미엄 앱 (학교구독 서비스) 
 spring:
     profiles:
         active: prod
@@ -10,6 +10,7 @@ spring:
         driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
         #운영서버 Prod Database (ADMIN)
         db-url: jdbc:log4jdbc:mariadb://smartooth-database.cdx8q9adtw2b.ap-northeast-2.rds.amazonaws.com:3306/Smartooth
+        #db-url: jdbc:log4jdbc:mariadb://smartooth-prod-database.cdx8q9adtw2b.ap-northeast-2.rds.amazonaws.com:3306/Smartooth
         db-username: smartooth
         db-password: smartooth509#
 
@@ -39,12 +40,11 @@ spring:
     web:
         resources:
             static-locations : classpath:/static-location/
----
-spring:
-    server:
-        #운영 Prod (AWS)
-        ip: 13.124.37.209
-        port: 8090
+
+server:
+    #운영 Prod (AWS)
+    ip: 13.124.37.209
+    port: 8090
 
             
 #---

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.smartooth.admin.mapper.AdminUserMapper">
+
+
+<!-- 로그인 시 회원 정보조회 -->
+    <select id="selectUserInfo" parameterType="String" resultType="co.smartooth.admin.vo.AdminUserVO">
+         SELECT USER_NO
+         			,USER_ID
+			 <!-- ,USER_NM -->
+					,USER_NAME
+				    ,DATE_FORMAT(USER_RGST_DT, '%Y-%m-%d') AS USER_RGST_DT
+				    ,USER_DELETE_YN
+				    ,DATE_FORMAT(USER_DELETE_DT, '%Y-%m-%d') AS USER_DELETE_DT
+				    ,DATE_FORMAT(LOGIN_DT, '%Y-%m-%d') AS LOGIN_DT
+				    ,LOGIN_CK
+				    ,USER_TYPE
+		FROM ST_USER
+		WHERE 1=1
+		<if test="userId != null and userId != '' ">
+			AND USER_ID = #{userId}
+   		</if> 
+    </select>
+    
+    
+    
+    
+    <select id="selectUserList" resultType="co.smartooth.admin.vo.AdminUserVO">
+         SELECT USER_NO
+         			,USER_ID
+			<!-- ,USER_NM -->
+					,USER_NAME
+					,CASE USER_SEX WHEN 'M' THEN '남' ELSE '여' END AS USER_SEX
+					,DATE_FORMAT(USER_BIRTHDAY, '%Y-%m-%d') AS USER_BIRTHDAY
+				    ,DATE_FORMAT(USER_RGST_DT, '%Y-%m-%d') AS USER_RGST_DT
+				    ,USER_TEL_NO
+			<!-- ,USER_DELETE_YN -->
+			<!-- ,DATE_FORMAT(USER_DELETE_DT, '%Y-%m-%d') AS USER_DELETE_DT -->
+			<!-- ,DATE_FORMAT(LOGIN_DT, '%Y-%m-%d') AS LOGIN_DT -->
+			<!-- ,LOGIN_CK -->
+				    ,CASE USER_TYPE
+				    	WHEN 'ST' THEN '학생'
+				    	WHEN 'PA' THEN '학부모'
+				    	ELSE '' END AS USER_TYPE
+				    ,SIDO_NM
+				    ,SIGUNGU_NM
+				    ,EUPMYEONDONG_NM
+				    ,ADDR_DETAIL
+		FROM ST_USER
+		WHERE 1=1
+		AND USER_TYPE = 'ST'
+		OR USER_TYPE = 'PA'
+		<!-- OR USER_TYPE = 'TC'  -->
+		AND USER_DELETE_YN = 'N'
+		ORDER BY USER_NAME ASC, USER_ID ASC
+    </select>
+
+
+
+
+    <select id="selectUserMeasureList" parameterType="String" resultType="hashmap">
+
+		SELECT	SU.USER_NAME														AS USER_NAME
+				   ,SU.USER_ID																AS USER_ID
+				   ,CASE SU.USER_TYPE
+				    WHEN 'ST' THEN '학생'
+				    WHEN 'PA' THEN '학부모'
+				    ELSE '' END AS USER_TYPE
+				   ,DATE_FORMAT(STM.MEASURE_DT, '%Y-%m-%d') 		AS MEASURE_DT
+			       ,SSI.SCHOOL_CODE													AS SCHOOL_CODE
+				   ,SSI.SCHOOL_NAME													AS SCHOOL_NAME
+			       ,SCI.CLASS_CODE														AS CLASS_CODE
+			       ,SCI.CLASS_NAME														AS CLASS_NAME
+		FROM ST_TEETH_MEASURE STM
+		LEFT JOIN ST_USER SU
+		ON STM.USER_ID = SU.USER_ID
+		LEFT JOIN ST_STUDENT_USER_DETAIL SSUD
+		ON SU.USER_ID = SSUD.USER_ID
+		LEFT JOIN ST_TEACHER_USER_DETAIL STUD
+		ON SSUD.TEACHER_ID = STUD.USER_ID
+		LEFT JOIN ST_SCHOOL_INFO SSI
+		ON STUD.SCHOOL_CODE = SSI.SCHOOL_CODE
+		LEFT JOIN ST_CLASS_INFO SCI
+		ON STUD.CLASS_CODE = SCI.CLASS_CODE
+		WHERE 1=1 
+		AND SU.USER_TYPE = 'ST'
+		<if test="searchType == 'userName'">
+		AND SU.USER_NAME LIKE CONCAT('%',#{ searchData},'%')
+   		</if>
+		<if test="searchType == 'userId'">
+		AND SU.USER_ID LIKE CONCAT('%',#{ searchData},'%')
+   		</if>
+		<if test="searchType == 'schoolName'">
+		AND SSI.SCHOOL_NAME LIKE CONCAT('%',#{ searchData},'%')
+   		</if>
+   		ORDER BY MEASURE_DT DESC, CLASS_CODE ASC,  USER_NAME ASC
+
+    </select>
+
+
+</mapper>

@@ -28,18 +28,20 @@ public class UserVO implements Serializable {
 	private String userAuthToken;
 	
 	
-	// ST_ST_USER :: STUDENT
+	
+	// STUDENT_USER_DEATAIL
+	private String schoolType;
 	private String isMeasuring;
 	private String teacherId;
-	private String cavityCnt;
 	
 	
-	// ST_TC_USER :: TEACHER
+	// TEACHER_USER_DEATAIL
 	private String schoolCode;
+	private String classCode;
 	private String className;
 
 	
-	// ST_PA_USER :: PARENT
+	// PARENT_USER_DETAIL
 	private String studentId;
 	
 	
@@ -164,6 +166,12 @@ public class UserVO implements Serializable {
     public void setUserAuthToken(String userAuthToken) {
         this.userAuthToken = userAuthToken;
     }
+    public String getSchoolType() {
+		return schoolType;
+	}
+	public void setSchoolType(String schoolType) {
+		this.schoolType = schoolType;
+	}
     public String getIsMeasuring() {
 		return isMeasuring;
 	}
@@ -176,23 +184,17 @@ public class UserVO implements Serializable {
 	public void setTeacherId(String teacherId) {
 		this.teacherId = teacherId;
 	}
-	public String getCavityCnt() {
-		return cavityCnt;
-	}
-	public void setCavityCnt(String cavityCnt) {
-		this.cavityCnt = cavityCnt;
-	}
 	public String getSchoolCode() {
 		return schoolCode;
 	}
 	public void setSchoolCode(String schoolCode) {
 		this.schoolCode = schoolCode;
 	}
-	public String getClassName() {
-		return className;
+	public String getClassCode() {
+		return classCode;
 	}
-	public void setClassName(String className) {
-		this.className = className;
+	public void setClassCode(String classCode) {
+		this.classCode = classCode;
 	}
 	public String getStudentId() {
 		return studentId;
@@ -200,4 +202,11 @@ public class UserVO implements Serializable {
 	public void setStudentId(String studentId) {
 		this.studentId = studentId;
 	}
+	public String getClassName() {
+		return className;
+	}
+	public void setClassName(String className) {
+		this.className = className;
+	}
+
 }

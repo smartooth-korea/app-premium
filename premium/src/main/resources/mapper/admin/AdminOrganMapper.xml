@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.smartooth.admin.mapper.AdminOrganMapper">
+
+
+	<!-- 기관 조회 -->
+    <select id="selectOrganList" resultType="co.smartooth.admin.vo.AdminOrganVO">
+		SELECT 
+			SCHOOL_CODE
+			,SCHOOL_NAME
+			,IS_VISIBLE
+		FROM ST_SCHOOL_INFO
+		WHERE 1=1
+		<if test="searchType == 'SCHOOL_CODE'">
+			AND SCHOOL_CODE LIKE CONCAT('%', #{searchData}, '%')
+   		</if>
+		<if test="searchType == 'SCHOOL_NAME'">
+			AND SCHOOL_NAME LIKE CONCAT('%', #{searchData}, '%')
+   		</if>
+    </select>
+
+
+
+	<!-- 기관 정보 등록 -->
+	<insert id="insertOrganInfo" parameterType="co.smartooth.admin.vo.AdminOrganVO">
+		
+		INSERT INTO ST_SCHOOL_INFO
+			(
+				SCHOOL_CODE
+				,SCHOOL_NAME
+				,IS_VISIBLE
+			)
+		VALUES
+			(
+				#{schoolCode}
+				,#{schoolName}
+				,#{isVisible}
+			)
+		
+	</insert>
+	
+	
+	
+	<!-- 기관 정보 삭제 -->
+	<delete id="deleteOrganInfo" parameterType="String">
+		
+		DELETE FROM ST_SCHOOL_INFO
+		WHERE 1=1
+		AND SCHOOL_CODE = #{schoolCode}
+		
+	</delete>
+	
+	
+	
+
+</mapper>

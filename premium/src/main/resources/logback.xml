@@ -28,7 +28,7 @@
             <!-- Local Log Location -->
 <!--             <fileNamePattern>C:\logs\logback-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern> -->
             <!-- Server Log Location -->
-            <fileNamePattern>/home/ubuntu/logs/smartooth-log-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+            <fileNamePattern>/home/ubuntu/logs/premium/smartooth-log-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <!-- or whenever the file size reaches 100MB -->
                 <maxFileSize>25MB</maxFileSize>
@@ -54,7 +54,7 @@
     <logger name="org.springframework" level="ERROR" >
     </logger>
     
-    <logger name="egovframework.*" level="ERROR">
+    <logger name="egovframework.*" level="DEBUG">
     </logger>
     
     <logger name="org.mybatis.spring" level="ERROR">
@@ -62,16 +62,16 @@
     
     
     
-    <logger name="jdbc" level="DEBUG">
+    <logger name="jdbc" level="ERROR">
     </logger>
 
     <logger name="jdbc.audit" level="ERROR">
     </logger>
     
-    <logger name="jdbc.sqlonly" level="DEBUG">
+    <logger name="jdbc.sqlonly" level="ERROR">
     </logger>
     
-    <logger name="jdbc.sqltiming" level="INFO">
+    <logger name="jdbc.sqltiming" level="ERROR">
     </logger>
     
     <logger name="jdbc.resultset" level="OFF">  
@@ -80,7 +80,7 @@
     <logger name="jdbc.resultsettable" level="DEBUG">  
     </logger>
     
-    <logger name="egovframework.sqlmappers" level="INFO">
+    <logger name="egovframework.sqlmappers" level="DEBUG">
     </logger>
     
     

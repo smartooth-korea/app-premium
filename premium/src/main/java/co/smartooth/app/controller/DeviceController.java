@@ -83,7 +83,7 @@ public class DeviceController {
 		userAuthToken = request.getHeader("Authorization");
 		// TOKEN 검증
 		JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
-		tokenValidation1 = jwtTokenUtil.validateToken(userAuthToken);
+		tokenValidation = jwtTokenUtil.validateToken(userAuthToken);
 		
 		if(tokenValidation1) {
 			try {
@@ -156,7 +156,7 @@ public class DeviceController {
 		userAuthToken = request.getHeader("Authorization");
 		// TOKEN 검증
 		JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
-		tokenValidation1 = jwtTokenUtil.validateToken(userAuthToken);
+		tokenValidation = jwtTokenUtil.validateToken(userAuthToken);
 		
 		if (tokenValidation1) {
 			calibrationVO.setUserId(userId);

@@ -1,19 +1,23 @@
 #LOCAL SERVER
 #스마투스 일반 앱 서버 설정
 spring:
-    profiles:
+    profiles: 
         active: local
-
-
     #datasource (mariaDB)
     datasource:
         driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-        db-url: jdbc:log4jdbc:mariadb://localhost:3306/smartooth
-        #운영서버 Prod Database
+        #로컬서버
+        #db-url: jdbc:log4jdbc:mariadb://localhost:3306/smartooth
+        #운영서버 PROD Database
         #db-url: jdbc:log4jdbc:mariadb://smartooth-database.cdx8q9adtw2b.ap-northeast-2.rds.amazonaws.com:3306/Smartooth
+        #개발서버 DEV - smartooth
+        #db-url: jdbc:log4jdbc:mariadb://smartooth-dev-database.cdx8q9adtw2b.ap-northeast-2.rds.amazonaws.com:3306/smartooth
+        #개발서버 DEV - smartooth_premium
+        db-url: jdbc:log4jdbc:mariadb://smartooth-dev-database.cdx8q9adtw2b.ap-northeast-2.rds.amazonaws.com:3306/smartooth_premium
         db-username: smartooth
         db-password: smartooth509#
 
+    loginUrl: localhost:8090
         
     mvc:
         view:
@@ -40,12 +44,11 @@ spring:
     web:
         resources:
             static-locations : classpath:/static-location/
----
-spring:
-    server:
-        #로컬 local
-        ip: localhost
-        port: 8090
+            
+server:
+    #로컬 local
+    ip: 127.0.0.1
+    port: 8090
 
             
 #---

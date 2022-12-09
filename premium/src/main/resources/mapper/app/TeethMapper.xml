@@ -90,16 +90,11 @@
 		<if test=" cavityCaution != null and cavityCaution != '' ">
 			,CAVITY_CAUTION
 		</if>
-		<if test=" cavityWarning != null and cavityWarning != '' ">
-			,CAVITY_WARNING
-		</if>
-<!-- 		<if test=" cavityDanger != null and cavityDanger != '' "> -->
-<!-- 			,CAVITY_DANGER -->
-<!-- 		</if> -->
 		<if test=" cavityDanger != null and cavityDanger != '' ">
 			,CAVITY_DANGER
 		</if>
     		,MEASURE_DT
+    		,DIAG_CD
     	)
     	VALUES
     	(
@@ -146,21 +141,15 @@
 		<if test=" cavityCaution != null and cavityCaution != '' ">
 			,#{cavityCaution}
 		</if>
-		<if test=" cavityWarning != null and cavityWarning != '' ">
-			,#{cavityWarning}
-		</if>
-<!-- 		<if test=" cavityDanger != null and cavityDanger != '' "> -->
-<!-- 			,#{cavityDanger} -->
-<!-- 		</if> -->
 		<if test=" cavityDanger != null and cavityDanger != '' ">
 				,#{cavityDanger}
 		</if>
     		,SYSDATE()
+    		,#{diagCd}
    		)
    		
     </insert>
-    
-    
+
     
     
     <!-- 회원 치아 측정 값 INSERT -->
@@ -207,9 +196,6 @@
 			</if>
 			<if test=" cavityCaution != null and cavityCaution != '' ">
 				,CAVITY_CAUTION = #{cavityCaution}
-			</if>
-			<if test=" cavityWarning != null and cavityWarning != '' ">
-				,CAVITY_WARNING = #{cavityWarning}
 			</if>
 			<if test=" cavityDanger != null and cavityDanger != '' ">
 				,CAVITY_DANGER = #{cavityDanger}
@@ -262,23 +248,49 @@
 			AND DATE_FORMAT(MEASURE_DT, '%Y-%m-%d') = #{measureDt}
    		
     </update>
+    
+    
+    
+    
+   	<!-- 회원 치아 측정 값이 오늘 데이터 인지 확인 후 값 반환(0 : 오늘X / 1: 오늘) -->
+	<select id="isExistSysDateRow" parameterType="co.smartooth.app.vo.TeethMeasureVO" resultType="Integer">
+		
+		SELECT COUNT(*)
+		  FROM ST_TEETH_MEASURE
+	 	 WHERE 1=1
+			AND USER_ID = #{userId}
+		<if test="userNo != null and userNo != '' ">
+            AND USER_NO = #{userNo}
+       	</if>
+			AND DATE_FORMAT(MEASURE_DT, '%Y-%m-%d') = DATE_FORMAT(SYSDATE(), '%Y-%m-%d') 
+			
+   	</select>
+    
    
     
     
-    
-     <!-- 회원 치아 개별 측정 값 UPDATE-->
-    <update id="updateUserCavityDangerCnt" parameterType="co.smartooth.app.vo.ToothMeasureVO">
+<!--      회원 치아 개별 측정 값 UPDATE 측정일마다 업데이트를 쳐줘라 -->
+    <update id="updateUserCavityCnt" parameterType="co.smartooth.app.vo.ToothMeasureVO">
 		UPDATE ST_STUDENT_USER_DETAIL
 		SET CAVITY_NORMAL  =  #{cavityNormal}  
 			  ,CAVITY_CAUTION  =  #{cavityCaution}
-		      ,CAVITY_WARNING  =  #{cavityWarning}
-<!-- 테스트용 내용 전달 시 변수 명 변경해야함 -->
 			  ,CAVITY_DANGER  =  #{cavityDanger}
 		WHERE 1=1
 		AND USER_ID = #{userId}
-<!-- 		<if test=" userNo != null and userNo != '' "> -->
-<!-- 		AND USER_NO = #{userNo} -->
-<!-- 		</if> -->
+    </update>
+
+
+
+
+     <!-- 회원 치아 개별 측정 값 UPDATE-->
+    <update id="updateUserCavityCntByMeasureDt" parameterType="co.smartooth.app.vo.ToothMeasureVO">
+		UPDATE ST_TEETH_MEASURE
+		SET CAVITY_NORMAL  =  #{cavityNormal}  
+			  ,CAVITY_CAUTION  =  #{cavityCaution}
+			  ,CAVITY_DANGER  =  #{cavityDanger}
+		WHERE 1=1
+		AND USER_ID = #{userId}
+		AND DATE_FORMAT(MEASURE_DT, '%Y-%m-%d') = #{measureDt}
     </update>
     
     
@@ -324,8 +336,12 @@
 		SELECT 
 			USER_NO, USER_ID 
 			,T01, T02, T03, T04, T05, T06, T07, T08, T09, T10, T11, T12, T13, T14, T15, T16
+			,T04, T05, T06, T07, T08, T09, T10, T11, T12, T13
 			,T17, T18, T19, T20, T21, T22, T23, T24, T25, T26, T27, T28, T29, T30, T31, T32
+			,T20, T21, T22, T23, T24, T25, T26, T27, T28, T29
 			,DATE_FORMAT(MEASURE_DT, '%Y-%m-%d') AS MEASURE_DT
+			,DIAG_CD
+			,MEMO
 		 FROM ST_TEETH_MEASURE
 		WHERE 1=1 
 		AND USER_ID = #{userId}
@@ -359,11 +375,11 @@
     
 	
 	
-	<!-- 학생 회원 목록 치아 측정 상태 조회  -->
+	<!-- 회원 목록 치아 측정 상태 조회  -->
 <!-- 	<select id="selectUserMeasuringValue" parameterType="co.smartooth.app.vo.UserVO" resultType="co.smartooth.app.vo.UserVO"> -->
 <!--         SELECT USER_NO -->
 <!--                   ,USER_ID -->
-<!--                   ,USER_NM -->
+<!--                   ,USER_NAME -->
 <!--                   ,IS_MEASURING -->
 <!--          FROM ST_ST_USER -->
 <!--         WHERE 1=1  -->
@@ -372,12 +388,12 @@
 <!--     </select > -->
 
 
-	<!-- 학생 회원 목록 치아 측정 상태 조회  -->
+	<!-- 회원 목록 치아 측정 상태 조회  -->
 	<select id="selectStUserIsMeasuring" parameterType="co.smartooth.app.vo.UserVO" resultType="co.smartooth.app.vo.UserVO">
 
 		SELECT SSUD.USER_NO				AS USER_NO
 				   ,SSUD.USER_ID				AS USER_ID
-				   ,SU.USER_NM				AS USER_NM
+				   ,SU.USER_NAME				AS USER_NAME
 				   ,SSUD.IS_MEASURING	AS IS_MEASURING
 				   
 		FROM ST_STUDENT_USER_DETAIL SSUD
@@ -387,10 +403,69 @@
 
     </select >
 
+	
+	
+	
+    <!-- 회원 진단 정보 조회 (측정일) -->
+	<select id="selectDiagCd" parameterType="String" resultType="co.smartooth.app.vo.TeethMeasureVO">
+
+		SELECT USER_ID
+				   ,DIAG_CD
+				   ,DATE_FORMAT(MEASURE_DT, '%Y-%m-%d') AS MEASURE_DT
+		FROM ST_TEETH_MEASURE
+		WHERE 1=1
+		AND USER_ID = #{userId}
+		AND DATE_FORMAT(MEASURE_DT, '%Y-%m-%d') = #{measureDt}
+		
+	</select>
+	
+	
+
+	<!-- 회원 진단 정보 업데이트 -->
+    <update id="updateDiagCd" parameterType="String">
+
+		UPDATE ST_TEETH_MEASURE
+		SET DIAG_CD  =  #{diagCd}
+		WHERE 1=1
+		AND USER_ID = #{userId}
+		AND DATE_FORMAT(MEASURE_DT, '%Y-%m-%d') = #{measureDt}
+		
+    </update>
 
 
 
-	<!-- 학생 회원 치아 측정 상태 업데이트 -->
+
+	<!-- 회원 비고(메모) 정보 조회 (측정일) -->
+	<select id="selectMemo" parameterType="String" resultType="co.smartooth.app.vo.TeethMeasureVO">
+
+		SELECT USER_ID
+				   ,MEMO
+				   ,DATE_FORMAT(MEASURE_DT, '%Y-%m-%d') AS MEASURE_DT
+		FROM ST_TEETH_MEASURE
+		WHERE 1=1
+		AND USER_ID = #{userId}
+		AND DATE_FORMAT(MEASURE_DT, '%Y-%m-%d') = #{measureDt}
+		
+	</select>
+
+
+
+
+	<!-- 회원 메모(비고) 정보 업데이트  -->
+    <update id="updateMemo" parameterType="String">
+
+		UPDATE ST_TEETH_MEASURE
+		SET MEMO  =  #{memo}
+		WHERE 1=1
+		AND USER_ID = #{userId}
+		AND DATE_FORMAT(MEASURE_DT, '%Y-%m-%d') = #{measureDt}
+		
+    </update>
+	
+	
+
+
+	<!-- 회원 치아 측정 상태 업데이트 -->
     <update id="updateStUserIsMeasuring" parameterType="co.smartooth.app.vo.UserVO">
 
 		UPDATE ST_STUDENT_USER_DETAIL
@@ -401,12 +476,82 @@
     
     
     
+    <!-- 회원 치아 측정 값 목록 조회 (최근 3개) -->
+	<select id="selectUserMeasureValueList" parameterType="String" resultType="co.smartooth.app.vo.TeethMeasureVO">
+		
+		SELECT     A.USER_ID
+	           ,A.T04
+	           ,A.T05
+	           ,A.T06
+	           ,A.T07
+	           ,A.T08
+	           ,A.T09
+	           ,A.T10
+	           ,A.T11
+	           ,A.T12
+	           ,A.T13
+	           ,A.T20
+	           ,A.T21
+	           ,A.T22
+	           ,A.T23
+	           ,A.T24
+	           ,A.T25
+	           ,A.T26
+	           ,A.T27
+	           ,A.T28
+	           ,A.T29
+	           ,A.CAVITY_NORMAL  AS CAVITY_NORMAL
+	           ,A.CAVITY_CAUTION AS CAVITY_CAUTION
+	           ,A.CAVITY_DANGER  AS CAVITY_DANGER
+	           ,A.DIAG_CD           AS DIAG_CD
+	           ,DATE_FORMAT(A.MEASURE_DT, '%Y-%m-%d')   AS MEASURE_DT 
+		FROM       (
+                    SELECT   USER_ID
+                             ,T04  
+                             ,T05  
+                             ,T06  
+                             ,T07  
+                             ,T08  
+                             ,T09  
+                             ,T10  
+                             ,T11  
+                             ,T12  
+                             ,T13  
+                             ,T20  
+                             ,T21  
+                             ,T22  
+                             ,T23  
+                             ,T24  
+                             ,T25  
+                             ,T26  
+                             ,T27  
+                             ,T28  
+                             ,T29  
+                             ,MEASURE_DT
+                             ,CAVITY_NORMAL
+                             ,CAVITY_CAUTION
+                             ,CAVITY_DANGER
+                             ,DIAG_CD
+                    FROM     ST_TEETH_MEASURE
+                    WHERE    USER_ID = #{userId}
+                    AND      DATE_FORMAT(MEASURE_DT, '%Y-%m-%d') <![CDATA[>=]]> #{startDt}
+                    AND      DATE_FORMAT(MEASURE_DT, '%Y-%m-%d') <![CDATA[<=]]> #{endDt}
+                    GROUP BY MEASURE_DT
+                 ) A
+	     INNER JOIN ST_TEETH_MEASURE AS B
+	     ON B.USER_ID = A.USER_ID
+	     AND B.MEASURE_DT = A.MEASURE_DT
+	     LIMIT 3
+			
+   	</select>
+    
+    
+    
     <!-- 충치 단계별 수치 조회 -->
 	<select id="selectCavityLevel" resultType="hashmap">
 
 		SELECT CAVITY_NORMAL
 				   ,CAVITY_CAUTION
-				   ,CAVITY_WARNING
 				   ,CAVITY_DANGER
 				   ,DATE_FORMAT(CAVITY_SET_DT, '%Y-%m-%d') AS CAVITY_SET_DT
 		FROM ST_CAVITY_LEVEL

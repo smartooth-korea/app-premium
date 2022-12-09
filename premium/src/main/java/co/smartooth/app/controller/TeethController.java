@@ -8,16 +8,21 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.poi.hpsf.Array;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import co.smartooth.app.service.DiagnosisService;
 import co.smartooth.app.service.TeethService;
 import co.smartooth.app.utils.JwtTokenUtil;
+import co.smartooth.app.vo.DiagnosisVO;
 import co.smartooth.app.vo.TeethInfoVO;
 import co.smartooth.app.vo.TeethMeasureVO;
 import co.smartooth.app.vo.ToothMeasureVO;
@@ -38,6 +43,9 @@ public class TeethController {
 	
 	@Autowired(required = false)
 	private TeethService teethService;
+	
+	@Autowired(required = false)
+	private DiagnosisService diagnosisService;
 	
 	// 인증 패스
 	private static boolean tokenValidation = false; 
@@ -98,7 +106,7 @@ public class TeethController {
 	 * 기능   : 회원의 치아 측정 값을 등록 또는 업데이트
 	 * 작성자 : 정주현 
 	 * 작성일 : 2022. 05. 25
-	 * 	수정일 : 2022. 07. 14
+	 * 	수정일 : 2022. 08. 26
 	 * @throws Exception 
 	 */
 //	@PostMapping(value = {"/app/user/insertUserMeasureValue.do"})
@@ -116,16 +124,13 @@ public class TeethController {
 		int[] teethValue = new int[32];
 		
 		int cavityCaution = 0;
-	    int cavityWarning = 0;
 	    int cavityDanger = 0;
 			    
-		// 정상 수치 0~12 이하 갯수
+		// 정상 수치 개수
 		int cavityNormalCnt = 0;
-		// 주의 수치 13~20 이하 갯수
+		// 주의 수치 개수
 		int cavityCautionCnt = 0;
-		// 경고 수치 20이상 29이하 갯수
-	    int cavityWarningCnt = 0;
-	    // 위험 수치 30이상 갯수
+	    // 충치 수치 개수
 	    int cavityDangerCnt = 0;
 		
 	    // 데이터 존재 유무 
@@ -169,21 +174,14 @@ public class TeethController {
 		// CAVITY_LEVEL 분류 부분 - 충치 단계별 수치 조회
 		cavityLevel = teethService.selectCavityLevel();
 		
-		
-		System.out.println("cavity_caution >>> "+cavityLevel.get("cavityCaution"));
-		System.out.println("cavity_warning >>> "+cavityLevel.get("cavityWarning"));
-		System.out.println("cavity_danger >>>  "+cavityLevel.get("cavityDanger"));
-		
 		cavityCaution = cavityLevel.get("cavityCaution");
-		cavityWarning = cavityLevel.get("cavityWarning");
+		cavityDanger = cavityLevel.get("cavityDanger");
 		
 		for (int i = 0; i < teethValue.length; i++) {
 			if (teethValue[i] < cavityCaution) { // 12 이하일 경우 정상 치아
 				cavityNormalCnt++;
-			} else if (teethValue[i] >= cavityCaution || teethValue[i] < cavityWarning) { // 13이상 19이하일 경우 충치 상태 주의
+			} else if (teethValue[i] >= cavityCaution || teethValue[i] < cavityDanger) { // 13이상 19이하일 경우 충치 상태 주의
 				cavityCautionCnt++;
-			} else if (teethValue[i] >= cavityWarning || teethValue[i] < cavityDanger) { // 13이상 19이하일 경우 충치 상태 경고
-				cavityWarningCnt++;
 			} else {
 				cavityDangerCnt++;
 			}
@@ -217,12 +215,11 @@ public class TeethController {
 				teethMeasureVO.setMeasurerId(measurerId);
 				teethMeasureVO.setCavityNormal(cavityNormalCnt);
 				teethMeasureVO.setCavityCaution(cavityCautionCnt);
-				teethMeasureVO.setCavityWarning(cavityWarningCnt);
 				teethMeasureVO.setCavityDanger(cavityDangerCnt);
 				
 				
 				// 회원 치아 측정 값을 저장하기 위해 현재 회원이 측정한 측정 값이 오늘 데이터인지 확인 후 값 반환(0 : 오늘X / 1: 오늘)
-				isExistRow = teethService.selectUserTeethMeasureValueByDate(teethMeasureVO);
+				isExistRow = teethService.isExistSysDateRow(teethMeasureVO);
 				if(isExistRow == 0){ // 0일 경우는 Database에 값이 없는 경우 ::: INSERT
 					teethService.insertUserTeethMeasureValue(teethMeasureVO);
 				}else { // 1이상일 경우 Database에 값이 있는 경우 ::: UPDATE
@@ -392,14 +389,12 @@ public class TeethController {
 	
 	
 	
-	
 	/**
 	 * 기능   : 회원 치아 개별 측정 값 조회 (기간)
 	 * 작성자 : 정주현 
 	 * 작성일 : 2022. 5. 26
  	 *		      기간  조회 (startDt, endDt)
 	 */
-//	@PostMapping(value = {"/app/user/selectUserToothMeasureValue.do"})
 	@PostMapping(value = {"/premium/user/selectUserToothMeasureValue.do"})
 	@ResponseBody
 	public HashMap<String,Object> selectUserMeasureToothValue(@RequestBody HashMap<String, Object> paramMap, HttpServletRequest request) throws Exception {
@@ -419,15 +414,12 @@ public class TeethController {
 		int[] teethValue = new int[32];
 		
 		Integer cavityCaution = 0;
-		Integer cavityWarning = 0;
 		Integer cavityDanger = 0;
 			    
 		// 정상 수치 0~12 이하 갯수
 		int cavityNormalCnt = 0;
-		// 주의 수치 13~20 이하 갯수
+		// 주의 수치 13~29 이하 갯수
 		int cavityCautionCnt = 0;
-		// 경고 수치 20이상 29이하 갯수
-	    int cavityWarningCnt = 0;
 	    // 위험 수치 30이상 갯수
 	    int cavityDangerCnt = 0;
 		
@@ -468,9 +460,11 @@ public class TeethController {
 				toothNo = (String)paramMap.get("toothNo");
 				// 치아 측정 값
 				toothValue = (String)paramMap.get("toothValue");
-				// 검색 기간
+				// 검색기간 (시작일)
 				startDt = (String)paramMap.get("startDt");
+				// 검색기간 (종료일)
 				endDt = (String)paramMap.get("endDt");
+				
 				
 				toothMeasureVO.setUserId(userId);
 				toothMeasureVO.setUserNo(userNo);
@@ -478,20 +472,7 @@ public class TeethController {
 				toothMeasureVO.setEndDt(endDt);
 				toothMeasureVO.setToothNo(toothNo);
 				toothMeasureVO.setMeasureDt(sysDate);
-			
-				if(toothValue != null && !toothValue.equals("") && !toothValue.equals(" ")) { // 값이 있으면 업데이트 
-					// 측정값을 입력할 당시, 오늘 날짜와 비교한 후 오늘 일 경우 업데이트, 아닐 경우 INSERT해줘야함
-					toothMeasureVO.setToothValue(Integer.parseInt(toothValue));
-					isExistRow = teethService.selectUserToothMeasureValueByDate(toothMeasureVO);
-					if(isExistRow == 0) {
-						teethService.insertUserToothMeasureValue(toothMeasureVO);
-					}else {
-						teethService.updateUserToothMeasureValue(toothMeasureVO);
-					}
-				}
 				
-				// 회원 치아 개별 측정 값 조회 (기간) :: 오늘 날짜로 검색 했을 때 0이 나올 경우, 지난 값을 가져와야됨
-				userToothValues = teethService.selectUserToothMeasureValue(toothMeasureVO);
 				
 				// 회원의 32개 치아 즉정 데이터 조회(기간)
 				teethMeasureVO.setUserNo(userNo);
@@ -500,12 +481,39 @@ public class TeethController {
 				teethMeasureVO.setEndDt(endDt);
 				teethMeasureVO.setMeasureDt(sysDate);
 				
-				// userId로 ST_TEETH_MEASURE 테이블에 값이 있는지 없는지 확인
-				// 회원 치아 측정 값을 저장하기 위해 현재 회원이 측정한 측정 값이 오늘 데이터인지 확인 후 값 반환(0 : 오늘X / 1: 오늘)
-				isExistRow = teethService.selectUserTeethMeasureValueByDate(teethMeasureVO);
-				if(isExistRow == 0){ // 0일 경우는 Database에 값이 없는 경우 ::: INSERT
-					teethService.insertUserTeethMeasureValue(teethMeasureVO);
+			
+				isExistRow = teethService.isExistSysDateRow(teethMeasureVO);
+				
+				if(toothValue != null && !toothValue.equals("") && !toothValue.equals(" ")) { // 값이 있으면 업데이트 
+
+					// 회원의 치아 측정 값 확인 >>> 오늘 날짜(측정날짜)의 값이 없을 경우 INSERT
+					toothMeasureVO.setToothValue(Integer.parseInt(toothValue));
+					if(isExistRow == 0) {
+						teethService.insertUserToothMeasureValue(toothMeasureVO);
+					}else {
+						teethService.updateUserToothMeasureValue(toothMeasureVO);
+					}
+				}else {
+					if(isExistRow == 0){ // 0일 경우는 Database에 값이 없는 경우 ::: INSERT
+						
+						// 메모 UPDATE
+						List<DiagnosisVO> diagList = diagnosisService.selectDiagDept2List();
+						String diagCd = "";
+						for(int i=0; i<diagList.size(); i++) {
+							if(i == diagList.size()-1) {
+								diagCd += diagList.get(i).getDiagCd()+":"+diagList.get(i).getDiagNo()+":0";
+							}else {
+								diagCd += diagList.get(i).getDiagCd()+":"+diagList.get(i).getDiagNo()+":0|";
+							}
+						}
+						teethMeasureVO.setDiagCd(diagCd);
+						// 치아 측정 값 INSERT
+						teethService.insertUserTeethMeasureValue(teethMeasureVO);
+					}
 				}
+				
+				// 회원 치아 개별 측정 값 조회 (기간) :: 오늘 날짜로 검색 했을 때 0이 나올 경우, 지난 값을 가져와야됨
+				userToothValues = teethService.selectUserToothMeasureValue(toothMeasureVO);
 				
 				// 모든 치아에 대한 조회 값 (오늘의 값이 없을 경우 최근 값으로 불러와야함)
 				userTeethValues = teethService.selectUserTeethMeasureValue(teethMeasureVO);
@@ -548,7 +556,6 @@ public class TeethController {
 				
 				
 				cavityCaution = Integer.parseInt(String.valueOf(cavityLevel.get("CAVITY_CAUTION")));
-				cavityWarning = Integer.parseInt(String.valueOf(cavityLevel.get("CAVITY_WARNING")));
 				cavityDanger = Integer.parseInt(String.valueOf(cavityLevel.get("CAVITY_DANGER")));
 
 				
@@ -557,26 +564,24 @@ public class TeethController {
 					System.out.println("teethValue[i] >> " + teethValue[i]);
 					if (teethValue[i] < cavityCaution) { 														// 12이하일 경우 정상 치아
 						cavityNormalCnt++;
-					} else if (teethValue[i] >= cavityCaution && teethValue[i] < cavityWarning) {	// 13이상 19이하일 경우 충치 상태 주의
-						cavityCautionCnt++;
-					} else if (teethValue[i] >= cavityWarning && teethValue[i] < cavityDanger) {	// 19이상 29이하일 경우 충치 상태 경고
-						cavityWarningCnt++;
-					} else {																								// 30이상일 경우 충치 상태 위험
-						cavityDangerCnt++;
+					} else if (teethValue[i] >= cavityCaution && teethValue[i] < cavityDanger) {	// 13이상 19이하일 경우 충치 상태 주의
+						cavityCaution++;
+					} else if (teethValue[i] > cavityDanger) {
+						cavityDanger++;
 					}
 				}
 
 				teethMeasureVO.setCavityNormal(cavityNormalCnt);
 				teethMeasureVO.setCavityCaution(cavityCautionCnt);
-				teethMeasureVO.setCavityWarning(cavityWarningCnt);
-				// 테스트용 내용 전달 시 변수 명 변경해야함
 				teethMeasureVO.setCavityDanger(cavityDangerCnt);
 				
 				userTeethValues.get(0).setCavityDanger(cavityDangerCnt);
 				
-				// ST_STUDENT_USER_DETAIL 테이블에 CavityCnt 업데이트
-				teethService.updateUserCavityDangerCnt(teethMeasureVO);
+				// ST_STUDENT_USER_DETAIL 테이블에 CavityCnt 업데이트 (최근)
+				teethService.updateUserCavityCnt(teethMeasureVO);
 				
+				// 측정 날짜 별 충치 갯수 업데이트 -- 메모 추가
+				teethService.updateUserCavityCntByMeasureDt(teethMeasureVO);
 				
 				hm.put("userToothValues", userToothValues);
 				hm.put("userTeethValues", userTeethValues);
@@ -596,49 +601,215 @@ public class TeethController {
 	
 	
 	
+	/**
+     * 기능   : 회원의 진단 정보 업데이트
+     * 작성자 : 정주현 
+     * 작성일 : 2022. 11. 25
+     * 수정일 : 2022. 11. 29
+     */
+	@PostMapping(value = {"/premium/user/updateDiagCd.do"})
+	@ResponseBody
+	public HashMap<String, Object> updateDiagCd(@RequestBody HashMap<String, Object> paramMap, HttpServletRequest request) throws Exception {
+	
+	    String userId = (String)paramMap.get("userId");
+	    String measureDt = (String)paramMap.get("measureDt");
+	    String diagCd = (String)paramMap.get("diagCd");
+	    String diagCd2 = null;
+	    String[] diagArray = null;
+	    String tmpDiagCd = null;
+	    
+	    //A:01:1|A:02:1
+	    if("".equals(measureDt) || measureDt == null) {
+			// 오늘 날짜 구하기 (SYSDATE)
+			LocalDate now = LocalDate.now();
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+			measureDt = now.format(formatter);
+	    }
+	    
+	    HashMap<String, Object> hm = new HashMap<String, Object>();
+	    TeethMeasureVO teethMeasureVO = new TeethMeasureVO();
+	    
+        try {
+
+        	if(diagCd.contains("|")) { // 두 개 이상의 파라미터 처리
+        		String[] tmpDiagArray = diagCd.split("\\|");
+        		for(int i=0; i < tmpDiagArray.length; i++) {
+        			diagArray = tmpDiagArray[i].split(":");
+    	        	diagCd2 = diagArray[0]+":"+diagArray[1]+":";
+    	        	// 아이디와 측정일 기준으로 메모를 조회한다
+    	        	teethMeasureVO = teethService.selectDiagCd(userId, measureDt);
+    	        	 tmpDiagCd = teethMeasureVO.getDiagCd();
+//    	        	tmpDiagCd = "A:01:0|A:02:0|B:01:0|B:02:0|B:03:0|B:04:0|B:05:0|B:06:0|C:01:0|C:01:0|C:01:0|C:01:0|D:01:0|D:02:0|D:03:0|D:04:0|D:05:0|D:06:0|D:07:0|D:08:0|D:09:0|D:10:0|D:11:0|D:12:0|D:13:0|D:14:0|D:15:0|D:16:0|D:17:0|D:18:0|E:01:0|E:02:0|E:03:0";
+    	        	// 받은 메모를 업데이트 해준다.
+    	        	
+    	        	StringBuffer sb = new StringBuffer();
+    	        	sb.append(tmpDiagCd);
+    	        	
+    	        	tmpDiagCd = sb.replace(tmpDiagCd.indexOf(diagCd2), tmpDiagCd.indexOf(diagCd2)+6, tmpDiagArray[i]).toString();
+    	        	teethService.updateDiagCd(userId, tmpDiagCd, measureDt);
+        		}
+        	}else {
+	        	// 파라미터로 받은 메모 (A:01:1)
+	        	diagArray = diagCd.split(":");
+	        	diagCd2 = diagArray[0]+":"+diagArray[1]+":";
+	        	// 아이디와 측정일 기준으로 메모를 조회한다
+	        	teethMeasureVO = teethService.selectDiagCd(userId, measureDt);
+	        	tmpDiagCd = teethMeasureVO.getDiagCd();
+	        	// 받은 메모를 업데이트 해준다.
+	        	
+	        	StringBuffer sb = new StringBuffer();
+	        	sb.append(tmpDiagCd);
+	        	
+	        	tmpDiagCd = sb.replace(tmpDiagCd.indexOf(diagCd2), tmpDiagCd.indexOf(diagCd2)+6, diagCd).toString();
+	        	teethService.updateDiagCd(userId, tmpDiagCd, measureDt);
+        	}
+        	
+        }catch (Exception e) {
+            hm.put("code", "500");
+            hm.put("msg", "Server error");
+            e.printStackTrace();
+            
+        }
+	    hm.put("code", "000");
+	    hm.put("msg", "Success");
+	    hm.put("diagInfo", teethMeasureVO);
+	    return hm;
+	
+	}
+	
+	
+	
+	
+	/**
+     * 기능   : 회원의 메모(비고) 내용 업데이트
+     * 작성자 : 정주현 
+     * 작성일 : 2022. 11. 25
+     * 수정일 : 2022. 11. 25
+     */
+	@PostMapping(value = {"/premium/user/updateMemo.do"})
+	@ResponseBody
+	public HashMap<String, Object> updateMemo(@RequestBody HashMap<String, Object> paramMap, HttpServletRequest request) throws Exception {
+	
+	    String userId = (String)paramMap.get("userId");
+	    String memo = (String)paramMap.get("memo");
+	    
+		// 오늘 날짜 구하기 (SYSDATE)
+		LocalDate now = LocalDate.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		String measureDt = now.format(formatter);
+	    
+	    HashMap<String, Object> hm = new HashMap<String, Object>();
+	    TeethMeasureVO teethMeasureVO = new TeethMeasureVO();
+	    
+        try {
+        	
+        	if(!"ÿ".equals(memo)) {
+        		// 파라미터로 받은 MEMO 정보를 업데이트
+            	teethService.updateMemo(userId, memo, measureDt);
+        	}
+
+        	teethMeasureVO = teethService.selectMemo(userId, measureDt);
+        	
+        	
+        	
+        }catch (Exception e) {
+            hm.put("code", "500");
+            hm.put("msg", "Server error");
+            e.printStackTrace();
+            
+        }
+	    hm.put("code", "000");
+	    hm.put("msg", "Success");
+	    hm.put("memoInfo", teethMeasureVO);
+	    return hm;
+	
+	}
+	
+	
+	
+	
+	
+	/**
+     * 기능   : 진단 정보 조회
+     * 작성자 : 정주현 
+     * 작성일 : 2022. 11. 25
+     * 수정일 : 2022. 11. 25
+     */
+	@PostMapping(value = {"/premium/user/selectDiagnosisInfo.do"})
+	@ResponseBody
+	public HashMap<String, Object> selectDiagnosisInfo(@RequestBody HashMap<String, Object> paramMap, HttpServletRequest request) throws Exception {
+	
+		List<DiagnosisVO> diagDept1List = new ArrayList<DiagnosisVO>();
+		List<DiagnosisVO> diagDept2List = new ArrayList<DiagnosisVO>();
+		
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		
+		try {
+			// ST_DIAG_DEPT1 리스트 조회 (최상위 진단 정보 : ex 양치불량)
+			diagDept1List = diagnosisService.selectDiagDept1List();
+			// ST_DIAG_DEPT2 리스트 조회 (중위 진단 정보 : ex 치태)
+			diagDept2List = diagnosisService.selectDiagDept2List();
+		} catch (Exception e) {
+			hm.put("code", "500");
+            hm.put("msg", "Server error");
+            e.printStackTrace();
+		}
+		
+	    hm.put("code", "000");
+	    hm.put("msg", "Success");
+	    
+	    hm.put("DiagDept1List", diagDept1List);
+	    hm.put("DiagDept2List", diagDept2List);
+		
+		return hm;
+	
+	}
+	
+	
+	
 	
 	 /**
-     * 기능   : 학생의 측정 상태(IS_MEASURING) 목록 조회
+     * 기능   : 회원의 측정 상태(IS_MEASURING) 목록 조회
      * 작성자 : 정주현 
      * 작성일 : 2022. 06. 30
      * 수정일 : 2022. 08. 04
      */
-	 @PostMapping(value = {"/premium/user/selectUserIsMeasuringValue.do"})
-    @ResponseBody
-    public HashMap<String, Object> selectUserIsMeasuringList(@RequestBody HashMap<String, Object> paramMap, HttpServletRequest request) throws Exception {
-
+	@PostMapping(value = {"/premium/user/selectUserIsMeasuringValue.do"})
+	@ResponseBody
+	public HashMap<String, Object> selectUserIsMeasuringList(@RequestBody HashMap<String, Object> paramMap, HttpServletRequest request) throws Exception {
+	
 	    String userId = (String)paramMap.get("userId");
 	    String isMeasuring = (String)paramMap.get("isMeasuring");
-        
+	    
 	    HashMap<String, Object> hm = new HashMap<String, Object>();
-        List<UserVO> userList = null;
-        UserVO userVO = new UserVO();
-        
-        if(userId != null && !userId.equals("") && isMeasuring != null && !isMeasuring.equals("")) {
-            userVO.setUserId(userId);
-            userList = teethService.selectStUserIsMeasuring(userVO);
-            
-            //동일한 값이 들어오면 db업데이트 X
-            if(!isMeasuring.equals(userVO.getIsMeasuring())) {
-                userVO.setIsMeasuring(isMeasuring);
-                teethService.updateStUserIsMeasuring(userVO);
-            }
-        }else {
-            try {
-                userList = teethService.selectStUserIsMeasuring(userVO);
-            }catch (Exception e) {
-                hm.put("code", "500");
-                hm.put("msg", "Server error");
-                e.printStackTrace();
-                
-            }
-        }
-        hm.put("code", "000");
-        hm.put("msg", "Success");
-        hm.put("isMeasuring", isMeasuring);
-        hm.put("userList", userList);
-
-        return hm;
-
-    }
+	    List<UserVO> userList = null;
+	    UserVO userVO = new UserVO();
+	    
+	    if(userId != null && !userId.equals("") && isMeasuring != null && !isMeasuring.equals("")) {
+	        userVO.setUserId(userId);
+	        userList = teethService.selectStUserIsMeasuring(userVO);
+	        
+	        //동일한 값이 들어오면 db업데이트 X
+	        if(!isMeasuring.equals(userVO.getIsMeasuring())) {
+	            userVO.setIsMeasuring(isMeasuring);
+	            teethService.updateStUserIsMeasuring(userVO);
+	        }
+	    }else {
+	        try {
+	            userList = teethService.selectStUserIsMeasuring(userVO);
+	        }catch (Exception e) {
+	            hm.put("code", "500");
+	            hm.put("msg", "Server error");
+	            e.printStackTrace();
+	            
+	        }
+	    }
+	    hm.put("code", "000");
+	    hm.put("msg", "Success");
+	    hm.put("isMeasuring", isMeasuring);
+	    hm.put("userList", userList);
+	
+	    return hm;
+	
+	}
 }
